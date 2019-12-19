@@ -22,3 +22,7 @@
     * Marshmellow
     * Chilipepper
     * Gebruiker
+### WORK:
+1. Thibault (Jasper)
+    * HTML output
+    * 2-3-4-boom afmaken
