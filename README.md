@@ -13,7 +13,6 @@
     * Chilipepper
     * Gebruiker
     * Stock
-    * Werknemer: workOrder
 ### DONE:
 1. Geavanceerde ADTs
     * 2-3-boom

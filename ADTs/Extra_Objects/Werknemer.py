@@ -31,7 +31,14 @@ class Werknemer:
         Pre-condities: Er moet een load groter dan 0 aanwezig zijn.
         Post-condities: De workload is afgetrokken van de load attribuut.
         """
-        pass
+        if self.currentOrder is None:
+            return False
+        else:
+            self.load -= self.workload
+            if self.load <= 0:
+                self.currentOrder = None
+                self.load = 0
+        return True
 
     def __str__(self):
         return f'Werknemer | ID: {self.id}, Naam: {self.voornaam} {self.achternaam}, Workload: {self.workload}.'
