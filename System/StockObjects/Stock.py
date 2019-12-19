@@ -10,9 +10,9 @@ from ADTs.Table_wrapper import *
 
 class Stock:
     def __init__(self):
-        self.toppings = Table("")  # honing, chilli en marshmallow
-        self.melk = Table("")           # adt hier aanpassen
-        self.shot = Table("")           # adt hier aanpassen
+        self.toppings = Table("dlc")  # honing, chili en marshmallow
+        self.melk = Table("dlc")           # adt hier aanpassen
+        self.shot = Table("dlc")           # adt hier aanpassen
 
 
 
