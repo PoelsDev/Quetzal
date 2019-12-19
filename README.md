@@ -3,8 +3,8 @@
 
 ### TODO:
 1. Geavanceerde ADTs
- * 2-3-4-boom afwerken
- * RZ-boom?
+    * 2-3-4-boom afwerken
+    * RZ-boom?
 2. Extra Objects
     * Chocolademelk
     * Chocoladeshot
@@ -14,3 +14,11 @@
     * Gebruiker
     * Stock
 ### DONE:
+1. Geavanceerde ADTs
+    * 2-3-boom
+    * Heap
+    * Hashmap
+2. Gewone ADTs
+3. Extra Objecten
+    * Werknemer
+    * Bestelling
