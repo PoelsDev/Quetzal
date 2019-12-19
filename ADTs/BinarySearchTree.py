@@ -1,4 +1,4 @@
-from BinaryTreeNode import BinaryTreeNode
+from ADTs.BinaryTreeNode import BinaryTreeNode
 
 
 class BinarySearchTree:
@@ -8,9 +8,6 @@ class BinarySearchTree:
         self.leftTree = None
         self.rightTree = None
 
-    def __str__(self):
-        lines = printTree(self, 0, False, '-')[0]
-        return '\n' + '\n'.join((line.rstrip() for line in lines))
 
     def isEmpty(self):
         """

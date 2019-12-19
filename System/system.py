@@ -7,11 +7,13 @@ class System:
     def __init__(self):
         self.stock = Stock()
         self.werkNemers = Table("bin")         # adt hier aanpassen
-        self.gebruikers = Table("dlc")         # adt hier aanpassen
+        self.gebruikers = Table("hashmap")         # adt hier aanpassen
 
         self.bestellingen = Table("queue")       # adt hier aanpassen
         self.actieveWerknemers = Table("stack")
         self.time = 0
+
+        self.lastSave = None        # last system save, voor eventuele undo
 
 
     def generateRapport(self):
