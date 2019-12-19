@@ -17,7 +17,7 @@ class Table:
         self.data = None
 
         if type == "stack":
-            self.data = Stack()
+            self.data = Stack()         # kies hier welke adts
         elif type == "heap":
             self.data = Heap()
         elif type == "queue":
