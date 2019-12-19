@@ -1,8 +1,9 @@
-#from Bin_tree import Tree
-#from Queuez import Queue
-#from Stack import Stack
-#from heap import Heap
-#from double_linked_chain import DLC
+from ADTs.BinarySearchTree import BinarySearchTree
+from ADTs.Tjenne.Queuez import Queue
+from ADTs.Thibault.Stack import Stack
+from ADTs.Tjenne.heap import Heap
+from ADTs.Tjenne.hashmap import Hashmap
+from ADTs.Mounir.DLC import DLC
 
 class Table:
 
@@ -25,7 +26,13 @@ class Table:
         elif type == "dlc":
             self.data = DLC()
         elif type == "binTree":
-            self.data = Tree()
+            self.data = BinarySearchTree()
+        elif type == "hash_lin":
+            self.data = Hashmap(51, "lin")
+        elif type == "hash_quad":
+            self.data = Hashmap(51, "quad")
+        elif type == "hash_sep":
+            self.data = Hashmap(51, "sep")
         else:
             print("Unknown type: " + type)
 
