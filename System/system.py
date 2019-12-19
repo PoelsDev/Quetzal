@@ -8,9 +8,18 @@ class System:
         self.stock = Stock()
         self.werkNemers = Table("")         # adt hier aanpassen
         self.bestellingen = Table("")       # adt hier aanpassen
+        self.gebruikers = Table("")         # adt hier aanpassen
 
+        self.actieveWerknemers = Table("")
         self.time = 0
 
 
-    def __update(self):
-        return
+    def generateRapport(self):
+        """
+        maakt een html file aan met gegevens
+        """
+
+    def systemRun(self):
+        """
+        parsed een input file, en voert de commands uit
+        """
