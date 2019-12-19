@@ -6,12 +6,6 @@
     * 2-3-4-boom afwerken
     * RZ-boom?
 2. Extra Objects
-    * Chocolademelk
-    * Chocoladeshot
-    * Honing
-    * Marshmellow
-    * Chilipepper
-    * Gebruiker
     * Stock
 ### DONE:
 1. Geavanceerde ADTs
@@ -22,3 +16,9 @@
 3. Extra Objecten
     * Werknemer
     * Bestelling
+    * Chocolademelk
+    * Chocoladeshot
+    * Honing
+    * Marshmellow
+    * Chilipepper
+    * Gebruiker
