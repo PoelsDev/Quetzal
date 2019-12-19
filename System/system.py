@@ -1,5 +1,5 @@
 
-from System.Stock import *
+from System.StockObjects.Stock import *
 
 
 class System:
