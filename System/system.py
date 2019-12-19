@@ -19,7 +19,14 @@ class System:
         maakt een html file aan met gegevens
         """
 
-    def systemRun(self):
+    def systemRun(self, inputFile):
+
         """
         parsed een input file, en voert de commands uit
         """
+
+
+
+
+
+        self.time += 1
