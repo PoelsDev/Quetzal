@@ -1,8 +1,8 @@
-from Bin_tree import Tree
-from Queuez import Queue
-from Stack import Stack
-from heap import Heap
-from double_linked_chain import DLC
+#from Bin_tree import Tree
+#from Queuez import Queue
+#from Stack import Stack
+#from heap import Heap
+#from double_linked_chain import DLC
 
 class Table:
 
