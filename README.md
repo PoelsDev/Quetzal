@@ -4,7 +4,7 @@
 ### TODO:
 1. Geavanceerde ADTs
     * 2-3-4-boom afwerken
-    * RZ-boom?
+    * System -> link tussen alle objecten
 2. Extra Objects
     * Stock
 ### DONE:
