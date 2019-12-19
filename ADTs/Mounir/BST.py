@@ -1,50 +1,6 @@
 from random import randint, choice
 from string import ascii_letters
 
-"""
-    +isEmpty(): boolean
-    Deze functie checkt of de binaire boom leeg is of niet.
-    :return: True als de boom leeg is, anders False.
-    Pre-condities: geen.
-    Post-condities: Geeft een boolean terug die weergeeft of de BST leeg is of niet.
-    
-    +searchTreeInsert(in NewItem: TreeItemType): boolean
-    Deze functie insert een newItem in de binaire boom.
-    :param newItem: NewItem dat moet worden toegevoegd.
-    :return: True of False (success Boolean)
-    Pre-condities: De parameter newItem moet een integer, een float of een object zijn van een class met een variabel searchkey, en er maag geen andere object zitten met hetzelfde searchkey.
-    Post-condities: Het object zal aan de binaire zoekboom worden toegevoegd. (Tenzij dezelfde key als een ander object)
-    
-    +searchTreeRetrieve(in searchKey: KeyType,out treeItem: TreeItemType)
-    Deze functie zoekt een bepaalde key in de binaire zoekboom op basis van een gegeven searchKey en geeft het daarbij horende object terug.
-    :param searchKey: Te zoeken key
-    :return: None als er geen gevonden is, een object (treeItem) als er wel 1 gevonden is.
-    Pre-condities: De parameter searchKey moet gelijk zijn aan de value van de variabel searchkey van de object die we willen zoeken.
-    Post-condities: Er zal een object zijn teruggegeven met de overeenkomstige sleutel.
-    
-    +searchTreeDelete(in searchKey: KeyType): boolean
-    Deze functie delete met een gegeven key, een object uit de boom.
-    :param searchKey: De key waarvoor een te verwijderen object moet gevonden worden.
-    :return: False als het mislukt is, True als het gelukt is.
-    Pre-condities: De parameter searchKey moet gelijk zijn aan de value van de variabel searchkey van de object die we willen verwijderen.
-    Post-condities: Het object met de overeenkomstige sleutel zal verwijdert zijn.
-    
-    +inorderTraverse()
-    Doorloopt de boom in inorder traverse en print de __str__ method van de objecten af (TreeItemType).
-    Pre-condities: geen.
-    Post-condities: De boom zal (als niet leeg) in inorder traverse doorlopen worden
-    
-    +printsearchTree()
-    //Print .dot code voor de structuur van de tree.
-    
-    +createDot()
-    //Maakt een .dot file met de structuur van de tree.
-    
-    +inorderDot()
-    //Maakt een .dot file met de inorder traversal van de tree.
-"""
-
-
 class Node:
     def __init__(self, value):
         self.value = value
@@ -58,7 +14,7 @@ class Node:
             else:                                         #Als die niet bestaat toevoegen op die plaats
                 self.leftTree = Node(value)
                 return True
-        elif self.value.getKey() < value.getKey:      #Check voor de rightTree
+        elif self.value.getKey() < value.getKey():      #Check voor de rightTree
             if self.rightTree is not None:                #Als die bestaat dan recursie
                 return self.rightTree.insert(value)
             else:                                         #Als die niet bestaat toevoegen op die plaats
@@ -68,7 +24,7 @@ class Node:
     def find(self, searchkey):
         if self.value.getKey() == searchkey:     # Als de value van de node gelijk is aan de value die we zoeken
             return self                                 # Return de node
-        elif self.value.getKey > searchkey:    # Als de value van de node groter is dan de value die we zoeken
+        elif self.value.getKey() > searchkey:    # Als de value van de node groter is dan de value die we zoeken
             if self.leftTree is not None:               # We gaan eerste checken als leftTree bestaat
                 return self.leftTree.find(searchkey)        # Als die bestaat gaan we recursie doen met de leftTree
             else:
@@ -174,7 +130,7 @@ class Node:
     def createDot(self, file):
         if self.leftTree is not None and self.rightTree is None:
             invisible = choice(ascii_letters) + str(randint(0, 999))
-            file.write(str(self.value.getKey())+ " -- " + str(self.leftTree.value.getKey()) + "\n")
+            file.write(str(self.value.getKey()) + " -- " + str(self.leftTree.value.getKey()) + "\n")
             file.write(invisible + " [style=invis]\n")
             file.write(str(self.value.getKey()) + " -- " + invisible + " [style=invis]\n")
             self.leftTree.createDot(file)
@@ -315,4 +271,3 @@ class Test:
         self.key = key
     def getKey(self):
         return self.key
-

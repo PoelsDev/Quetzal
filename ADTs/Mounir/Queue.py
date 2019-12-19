@@ -1,36 +1,3 @@
-"""
-    +isEmpty(): boolean
-    Deze functie checkt of de queue leeg is of niet.
-    :return: True of False
-    Pre-condities: geen
-    Post-condities: Geeft met een boolean weer of de queue leeg is of niet.
-
-    +enqueue(in newItem:QueueItemType): boolean
-    Voegt een item toe aan de queue (achteraan).
-    :param newItem: Nieuw toe te voegen item.
-    :return: True of False
-    Pre-condities: geen
-    Post-condities: De parameter newItem zal toegevoegd worden aan de queue.
-
-    +dequeue(): boolean
-    Verwijdert eerste item uit de queue.
-    :return: QueueFront of false
-    Pre-condities: geen
-    Post-condities: De queueFront wordt verwijderdt en teruggegeven als return.
-
-    +getFront(): queueItemType, boolean
-    Geeft het eerste item van de queue terug.
-    Pre-condities: geen
-    Post-condities: De queueFront wordt teruggegeven of False als de queue leeg is
-
-    +printQueue()
-    // Geeft .dot code voor de queue
-
-    +traverse()
-    Doorloopt de queue.
-"""
-
-
 class Queue:
     def __init__(self, maxsize):
         self.maxsize = maxsize

@@ -1,38 +1,3 @@
-"""
-    +isEmpty(): boolean
-    Deze functie checkt of de Stack leeg is of niet.
-    :return: True of False
-    Pre-condities: geen
-    Post-condities: Geeft weer of de stack leeg is of niet.
-
-    +push(in newItem:StackItemType): boolean
-    Voegt een item toe bovenop de stack.
-    :param newItem: Nieuw toe te voegen item.
-    :return: True of False: succes Boolean
-    Pre-condities: De parameter newItem moet een object van een class met een variabel "searchkey".
-    Post-condities: newItem wordt toegevoegd
-
-    +pop(): stackItemType, boolean
-    Haalt het laatste item vanop de stack eraf en geeft die weer.
-    :return: Het gepopte item (None als de stack leeg is) en een succes Boolean.
-    Pre-condities: geen
-    Post-condities: Het bovenste item van de stack is er af gehaald en wordt teruggegeven.
-
-    +getTop(): stackItemType, boolean
-    Geeft het bovenste item van de stack.
-    :return: Returnt het item (None als de stack leeg is) en een succes Boolean
-    Pre-condities: geen
-    Post-condities: Als de stack niet leeg is zal het bovenste item teruggegeven worden
-
-    +printStack()
-    Print .dot code voor de queue
-
-    +createDot()
-    Maakt een .dot file met code van de structuur van de queue.
-
-"""
-
-
 class Stack:
     def __init__(self, maxsize):
         self.maxsize = maxsize
