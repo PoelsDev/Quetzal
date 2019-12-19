@@ -1,7 +1,13 @@
 
 
-from ADTs.Extra_Objects.Bestelling import *
-from ADTs.Extra_Objects.Werknemer import *
+from System.Bestelling import *
+from System.Werknemer import *
+
+from System.Honing import *
+from System.Chilipeper import *
+from System.Chocolade_Shot import *
+
+
 
 from ADTs.Table_wrapper import *
 
