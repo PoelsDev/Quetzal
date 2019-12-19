@@ -1,50 +1,5 @@
 from copy import deepcopy
 
-"""
-    +isEmpty(): boolean
-    Deze functie checkt of de 2-3 boom leeg is of niet.
-    :return: True als de boom leeg is, anders False.
-    Pre-condities: geen.
-    Post-condities: Geeft een boolean terug die weergeeft of de 2-3 boom leeg is of niet.
-    
-    +insertItem(in NewItem: TreeItemType): boolean
-    Deze functie insert een newItem in de 2-3 boom.
-    :param newItem: NewItem dat moet worden toegevoegd.
-    :return: True of False (success Boolean)
-    Pre-condities: De parameter newItem moet een object van een class zijn met een variabel searchkey.
-    Post-condities: Het object zal aan de 2-3 boom worden toegevoegd. (Tenzij dezelfde key als een ander object)
-
-    +retrieveItem(in searchKey: KeyType, out treeItem: TreeItemType)
-    Deze functie zoekt een bepaalde key in de 2-3 boom op basis van een gegeven searchKey en geeft het daarbij horende object terug.
-    :param searchKey: Te zoeken key
-    :return: None als er geen gevonden is, een object (treeItem) als er wel 1 gevonden is.
-    Pre-condities: De parameter searchKey moet gelijk zijn aan de value van de variabel searchkey van de object die we willen zoeken.
-    Post-condities: Er zal een object zijn teruggegeven met de overeenkomstige sleutel.
-    
-    +deleteItem(in searchKey: KeyType): boolean
-    Deze functie delete met een gegeven key, een object uit de boom.
-    :param searchKey: De key waarvoor een te verwijderen object moet gevonden worden.
-    :return: False als het mislukt is, True als het gelukt is.
-    Pre-condities: De parameter searchKey moet gelijk zijn aan de value van de variabel searchkey van de object die we willen verwijderen.
-    Post-condities: Het object met de overeenkomstige sleutel zal verwijdert zijn.
-    
-    +printTree()
-    Geeft .dot code voor de structuur van de 2-3 boom.
-    
-    +createDot()
-    Creert een nieuwe .dot file met de structuur van de 2-3 boom
-    
-    +inorderDot()
-    Creert een nieuwe .dot file met de inorder traversal de de 2-3 boom 
-    
-    +inorder()
-    Doorloopt de boom in inorder traverse en print de __str__ method van de objecten af (TreeItemType).
-    Pre-condities: geen.
-    Post-condities: De boom zal (als niet leeg) in inorder traverse doorlopen worden.
-
-"""
-
-
 class Node:
     def __init__(self):
         self.root = []
@@ -57,23 +12,23 @@ class Node:
 
     def find(self, key):
         if len(self.root) == 1:
-            if self.root[0].searchkey == key:
+            if self.root[0].getKey() == key:
                 return self.root[0]
             if self.left is not None and self.right is not None:
-                if self.root[0].searchkey > key:
+                if self.root[0].getKey() > key:
                     return self.left.find(key)
                 else:
                     return self.right.find(key)
             return None
         else:
-            if self.root[0].searchkey == key:
+            if self.root[0].getKey() == key:
                 return self.root[0]
-            elif self.root[1].searchkey == key:
+            elif self.root[1].getKey() == key:
                 return self.root[1]
             if self.left is not None and self.right is not None and self.mid is not None:
-                if self.root[0].searchkey > key:
+                if self.root[0].getKey() > key:
                     return self.left.find(key)
-                elif self.root[1].searchkey > key:
+                elif self.root[1].getKey() > key:
                     return self.mid.find(key)
                 else:
                     return self.right.find(key)
@@ -87,15 +42,15 @@ class Node:
                 self.root = [value]
             # -- Bijna vol
             if len(self.root) == 1:
-                if self.root[0].searchkey < value.searchkey:
+                if self.root[0].getKey() < value.getKey():
                     self.root = self.root + [value]
                 else:
                     self.root = [value] + self.root
             # --  Vol
             else:  # (len = 2)
-                if self.root[1].searchkey < value.searchkey:
+                if self.root[1].getKey() < value.getKey():
                     self.root = self.root + [value]
-                elif self.root[0].searchkey < value.searchkey:
+                elif self.root[0].getKey() < value.getKey():
                     self.root = [self.root[0]] + [value] + [self.root[1]]
                 else:
                     self.root = [value] + self.root
@@ -272,22 +227,22 @@ class Node:
         #RECURSIE TOT BLAD
         else:
             if len(self.root) == 1:
-                if value.searchkey < self.root[0].searchkey:
+                if value.getKey() < self.root[0].getKey():
                     self.left.insert(value)
                 else:
                     self.right.insert(value)
             else:
                 if len(self.root) == 2:
-                    if value.searchkey < self.root[0].searchkey:
+                    if value.getKey() < self.root[0].getKey():
                         self.left.insert(value)
-                    elif value.searchkey < self.root[1].searchkey:
+                    elif value.getKey() < self.root[1].getKey():
                         self.mid.insert(value)
                     else:
                         self.right.insert(value)
 
     def delete(self, key, t):
         if len(self.root) == 1:                                                 # Element zit in een 2-node
-            if self.root[0].searchkey == key:
+            if self.root[0].getKey() == key:
                 if self.left is None and self.right is None:
                     if len(self.parent.root) == 2:
                         if self.parent.left == self:
@@ -791,14 +746,14 @@ class Node:
                     self.right.goleft().delete(key, t)
 
             else:      # Recursie tot juiste node
-                if self.root[0].searchkey > key:
+                if self.root[0].getKey() > key:
                     self.left.delete(key, t)
                 else:
                     self.right.delete(key, t)
 
         elif len(self.root) == 2:
-            if self.root[0].searchkey == key or self.root[1].searchkey == key:
-                if self.root[0].searchkey == key:                                                  # X 1
+            if self.root[0].getKey() == key or self.root[1].getKey() == key:
+                if self.root[0].getKey() == key:                                                  # X 1
                     if self.left is None and self.right is None and self.mid is None:
                         self.root = [self.root[1]]
                     # Vervanging met inorder successor
@@ -810,7 +765,7 @@ class Node:
                         else:
                             self.mid.goleft().root = [temp]
                         self.mid.goleft().delete(key, t)
-                elif self.root[1].searchkey == key:
+                elif self.root[1].getKey() == key:
                     if self.left is None and self.right is None and self.mid is None:
                         self.root = [self.root[0]]
                     # Vervanging met inorder successor
@@ -825,9 +780,9 @@ class Node:
 
             # Recursie tot juiste node
             else:
-                if self.root[0].searchkey > key:
+                if self.root[0].getKey() > key:
                     self.left.delete(key, t)
-                elif self.root[1].searchkey > key:
+                elif self.root[1].getKey() > key:
                     self.mid.delete(key, t)
                 else:
                     self.right.delete(key, t)
@@ -836,33 +791,33 @@ class Node:
         if len(self.root) == 1:
             if self.left is not None and self.left2 is None and self.mid is None and self.right2 is None and self.right is not None:
                 if len(self.left.root) == 1:
-                    print(self.root[0].searchkey, "--", self.left.root[0].searchkey)
+                    print(self.root[0].getKey(), "--", self.left.root[0].getKey())
                 else:
-                    print(self.root[0].searchkey, "--", '"' + str(self.left.root[0].searchkey) + " | " + str(self.left.root[1].searchkey) + '"')
+                    print(self.root[0].getKey(), "--", '"' + str(self.left.root[0].getKey()) + " | " + str(self.left.root[1].getKey()) + '"')
                 if len(self.right.root) == 1:
-                    print(self.root[0].searchkey, "--", self.right.root[0].searchkey)
+                    print(self.root[0].getKey(), "--", self.right.root[0].getKey())
                 else:
-                    print(self.root[0].searchkey, "--", '"' + str(self.right.root[0].searchkey) + " | " + str(self.right.root[1].searchkey) + '"')
+                    print(self.root[0].getKey(), "--", '"' + str(self.right.root[0].getKey()) + " | " + str(self.right.root[1].getKey()) + '"')
                 self.left.print()
                 self.right.print()
 
         elif len(self.root) == 2:
             if self.left is not None and self.left2 is None and self.mid is not None and self.right2 is None and self.right is not None:
-                temp = '"' + str(self.root[0].searchkey) + " | " + str(self.root[1].searchkey) + '"'
+                temp = '"' + str(self.root[0].getKey()) + " | " + str(self.root[1].getKey()) + '"'
                 if len(self.left.root) == 1:
-                    print(temp, "--", self.left.root[0].searchkey)
+                    print(temp, "--", self.left.root[0].getKey())
                 else:
-                    print(temp, "--", '"' + str(self.left.root[0].searchkey) + " | " + str(self.left.root[1].searchkey) + '"')
+                    print(temp, "--", '"' + str(self.left.root[0].getKey()) + " | " + str(self.left.root[1].getKey()) + '"')
 
                 if len(self.mid.root) == 1:
-                    print(temp, "--", self.mid.root[0].searchkey)
+                    print(temp, "--", self.mid.root[0].getKey())
                 else:
-                    print(temp, "--", '"' + str(self.mid.root[0].searchkey) + " | " + str(self.mid.root[1].searchkey) + '"')
+                    print(temp, "--", '"' + str(self.mid.root[0].getKey()) + " | " + str(self.mid.root[1].getKey()) + '"')
 
                 if len(self.right.root) == 1:
-                    print(temp, "--", self.right.root[0].searchkey)
+                    print(temp, "--", self.right.root[0].getKey())
                 else:
-                    print(temp, "--", '"' + str(self.right.root[0].searchkey) + " | " + str(self.right.root[1].searchkey) + '"')
+                    print(temp, "--", '"' + str(self.right.root[0].getKey()) + " | " + str(self.right.root[1].getKey()) + '"')
                 self.left.print()
                 self.mid.print()
                 self.right.print()
@@ -871,33 +826,33 @@ class Node:
         if len(self.root) == 1:
             if self.left is not None and self.left2 is None and self.mid is None and self.right2 is None and self.right is not None:
                 if len(self.left.root) == 1:
-                    f.write(str(self.root[0].searchkey) + " -- " + str(self.left.root[0].searchkey) + "\n")
+                    f.write(str(self.root[0].getKey()) + " -- " + str(self.left.root[0].getKey()) + "\n")
                 else:
-                    f.write(str(self.root[0].searchkey) + " -- " + '"' + str(self.left.root[0].searchkey) + " | " + str(self.left.root[1].searchkey) + '"\n')
+                    f.write(str(self.root[0].getKey()) + " -- " + '"' + str(self.left.root[0].getKey()) + " | " + str(self.left.root[1].getKey()) + '"\n')
                 if len(self.right.root) == 1:
-                    f.write(str(self.root[0].searchkey) + " -- " + str(self.right.root[0].searchkey) + "\n")
+                    f.write(str(self.root[0].getKey()) + " -- " + str(self.right.root[0].getKey()) + "\n")
                 else:
-                    f.write(str(self.root[0].searchkey) + " -- " + '"' + str(self.right.root[0].searchkey) + " | " + str(self.right.root[1].searchkey) + '"\n')
+                    f.write(str(self.root[0].getKey()) + " -- " + '"' + str(self.right.root[0].getKey()) + " | " + str(self.right.root[1].getKey()) + '"\n')
                 self.left.createDot(f)
                 self.right.createDot(f)
 
         elif len(self.root) == 2:
             if self.left is not None and self.left2 is None and self.mid is not None and self.right2 is None and self.right is not None:
-                temp = '"' + str(self.root[0].searchkey) + " | " + str(self.root[1].searchkey) + '"'
+                temp = '"' + str(self.root[0].getKey()) + " | " + str(self.root[1].getKey()) + '"'
                 if len(self.left.root) == 1:
-                    f.write(temp + " -- " + str(self.left.root[0].searchkey) + "\n")
+                    f.write(temp + " -- " + str(self.left.root[0].getKey()) + "\n")
                 else:
-                    f.write(temp + " -- " + '"' + str(self.left.root[0].searchkey) + " | " + str(self.left.root[1].searchkey) + '"\n')
+                    f.write(temp + " -- " + '"' + str(self.left.root[0].getKey()) + " | " + str(self.left.root[1].getKey()) + '"\n')
 
                 if len(self.mid.root) == 1:
-                    f.write(temp + " -- " + str(self.mid.root[0].searchkey) + "\n")
+                    f.write(temp + " -- " + str(self.mid.root[0].getKey()) + "\n")
                 else:
-                    f.write(temp + " -- " + '"' + str(self.mid.root[0].searchkey) + " | " + str(self.mid.root[1].searchkey) + '"\n')
+                    f.write(temp + " -- " + '"' + str(self.mid.root[0].getKey()) + " | " + str(self.mid.root[1].getKey()) + '"\n')
 
                 if len(self.right.root) == 1:
-                    f.write(temp + " -- " + str(self.right.root[0].searchkey) + "\n")
+                    f.write(temp + " -- " + str(self.right.root[0].getKey()) + "\n")
                 else:
-                    f.write(temp + " -- " + '"' + str(self.right.root[0].searchkey) + " | " + str(self.right.root[1].searchkey) + '"\n')
+                    f.write(temp + " -- " + '"' + str(self.right.root[0].getKey()) + " | " + str(self.right.root[1].getKey()) + '"\n')
                 self.left.createDot(f)
                 self.mid.createDot(f)
                 self.right.createDot(f)
@@ -965,7 +920,7 @@ class Tree:
             self.root.root = [value]
             return True
         else:
-            if self.retrieveItem(value.searchkey) is None:
+            if self.retrieveItem(value.getKey()) is None:
                 self.root.insert(value)
                 return True
             else:
@@ -988,9 +943,9 @@ class Tree:
         if not self.isEmpty():
             if self.root.left is None and self.root.mid is None and self.root.right is None:
                 if len(self.root.root) == 1:
-                    print(self.root.searchkey)
+                    print(self.root.getKey())
                 else:
-                    print('"' + str(self.root.root[0].searchkey), "|", str(self.root.root[1].searchkey) + '"')
+                    print('"' + str(self.root.root[0].getKey()), "|", str(self.root.root[1].getKey()) + '"')
             else:
                 self.root.print()
         print("}")
@@ -1001,9 +956,9 @@ class Tree:
         if not self.isEmpty():
             if self.root.left is None and self.root.mid is None and self.root.right is None:
                 if len(self.root.root) == 1:
-                    f.write(str(self.root.searchkey) + "\n")
+                    f.write(str(self.root.getKey()) + "\n")
                 else:
-                    f.write('"' + str(self.root.root[0].searchkey) + " | " + str(self.root.root[1].searchkey) + '"\n')
+                    f.write('"' + str(self.root.root[0].getKey()) + " | " + str(self.root.root[1].getKey()) + '"\n')
             else:
                 self.root.createDot(f)
         f.write("}\n")
@@ -1027,8 +982,10 @@ class Tree:
 
 class Test:
     def __init__(self, key):
-        self.searchkey = key
+        self.key = key
 
     def __str__(self):
-        return str(self.searchkey)
+        return str(self.getKey())
 
+    def getKey(self):
+        return self.key
