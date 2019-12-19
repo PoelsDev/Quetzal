@@ -6,11 +6,11 @@ from ADTs.Table_wrapper import *
 class System:
     def __init__(self):
         self.stock = Stock()
-        self.werkNemers = Table("")         # adt hier aanpassen
-        self.bestellingen = Table("")       # adt hier aanpassen
-        self.gebruikers = Table("")         # adt hier aanpassen
+        self.werkNemers = Table("bin")         # adt hier aanpassen
+        self.gebruikers = Table("dlc")         # adt hier aanpassen
 
-        self.actieveWerknemers = Table("")
+        self.bestellingen = Table("queue")       # adt hier aanpassen
+        self.actieveWerknemers = Table("stack")
         self.time = 0
 
 
@@ -19,7 +19,14 @@ class System:
         maakt een html file aan met gegevens
         """
 
-    def systemRun(self):
+    def systemRun(self, inputFile):
+
         """
         parsed een input file, en voert de commands uit
         """
+
+
+
+
+
+        self.time += 1

@@ -10,10 +10,29 @@ from ADTs.Table_wrapper import *
 
 class Stock:
     def __init__(self):
-        self.chili = Table("")          # adt hier aanpassen
-        self.honing = Table("")         # adt hier aanpassen
-        self.marshmellow = Table("")    # adt hier aanpassen
+        self.toppings = Table("")  # honing, chilli en marshmallow
         self.melk = Table("")           # adt hier aanpassen
         self.shot = Table("")           # adt hier aanpassen
+
+
+
+    def count(self, type):
+        """
+        Bepaald het aantal aanwezige items in de stock
+
+        type: type ingrediënt
+        """
+        if type == "melk":
+            # getsize
+            return
+
+        elif type == "shot":
+            # traverse, return vector aan met maps voor elk type shot
+            return
+
+        else:
+            # traverse, return vector met maps voor elk soort topping
+            return
+
 
 
