@@ -71,6 +71,8 @@ class System:
 
         lines = f.readlines()
 
+        commands = []
+
         for line in range(len(lines)):
 
             if not (lines[line][0] == "#"):
@@ -79,10 +81,19 @@ class System:
                     if initialising and word != "start":  # als in init false, elke lijn in __parseInit steken
                         self.__parseInit(lines[line])
                         break
+
                     if word == "init":
                         initialising = True
                     elif word == "start":
                         initialising = False
+                    else:
+                        commands.append(lines[line])
+                        break
+
+        print("her")
+
+
+
 
 
 
