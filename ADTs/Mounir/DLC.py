@@ -101,8 +101,8 @@ class DLC:
     def insert(self, value, index=None):
         if isinstance(value, int):
             value = Test(value)
-        if self.find(value.getKey()):
-            return False
+        # if self.find(value.getKey()):
+        #     return False
         if index is None:
             index = self.size
         if index > self.size or index < 0:

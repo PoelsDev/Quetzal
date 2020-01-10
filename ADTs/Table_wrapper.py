@@ -28,11 +28,11 @@ class Table:
             self.data = DLC()
         elif type == "binTree":
             self.data = BinarySearchTree()
-        elif type == "hash_lin":
+        elif type == "h_lin":
             self.data = Hashmap(51, "lin")
-        elif type == "hash_quad":
+        elif type == "h_quad":
             self.data = Hashmap(51, "quad")
-        elif type == "hash_sep":
+        elif type == "h_sep":
             self.data = Hashmap(51, "sep")
         else:
             print("Unknown type: " + type)
@@ -52,7 +52,7 @@ class Table:
         elif self.type == "queue":
             self.data.enqueue(content, key)
         elif self.type == "dlc":
-            self.data.add(content, key)
+            self.data.insert(content, key)
         elif self.type == "binTree":
             self.data.insert(key, content)
 

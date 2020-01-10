@@ -1,4 +1,4 @@
-from double_linked_chain import DLC
+from ADTs.Tjenne.double_linked_chain import DLC
 
 import os
 

@@ -3,7 +3,7 @@
 class Ingredient:
     def __init__(self, type, vervaldatum):
         self.vervaldatum = int(vervaldatum)
-        self.type = "type"
+        self.type = type
         if type == "chili":
             self.prijs = 0.25
         elif type == "honing":
