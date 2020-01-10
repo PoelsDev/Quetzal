@@ -1,5 +1,3 @@
-
-
 class Ingredient:
     def __init__(self, type, vervaldatum):
         self.vervaldatum = int(vervaldatum)
