@@ -2,7 +2,7 @@
 ## GAS Groepsgedeelte TO: Tjenne, Mounir, Jasper, Thibault
 
 ### TODO:
-1. Geavanceerde ADTs
+1. System
     * System -> link tussen alle objecten
 2. Extra Objects
     * Stock -> functions
