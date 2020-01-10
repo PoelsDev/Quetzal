@@ -6,7 +6,7 @@ from ADTs.Table_wrapper import *
 class System:
     def __init__(self):
         self.stock = Stock()
-        self.werkNemers = Table("bin")         # adt hier aanpassen
+        self.werkNemers = Table("binTree")         # adt hier aanpassen
         self.gebruikers = Table("hashmap")         # adt hier aanpassen
 
         self.bestellingen = Table("queue")       # adt hier aanpassen
