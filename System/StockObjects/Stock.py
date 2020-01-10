@@ -13,18 +13,19 @@ class Stock:
 
 
 
-    def count(self, type):
+    def count(self, type, subtype=None):
         """
-        Bepaald het aantal aanwezige items in de stock
+        Bepaalt het aantal aanwezige items in de stock
 
-        type: type ingrediënt
+        type: type ingrediënt (shot, topping)
+        subtype: welk soort shot of topping
         """
-        if type == "melk":
-            # getsize
+        if type == "shot":
+            #self.shots.traverse(subtype)
             return
 
-        elif type == "shot":
-            # traverse, return vector aan met maps voor elk type shot
+        elif type == "topping":
+            # self.toppings.traverse(subtype)
             return
 
         else:
