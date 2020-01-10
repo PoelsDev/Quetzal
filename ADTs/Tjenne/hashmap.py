@@ -300,6 +300,20 @@ class Hashmap:
 
 
 
+    def traverse(self):
+        """
+        traversed de map en returned een lijst met alle items
+        :return:
+        """
+
+        allContent = []
+        if self.type != "h_sep":
+            for i in range(len(self.map)):
+                if self.map[i] is not None:
+                    allContent.append(self.map[i].conent)
+
+
+
 
 # h = Hashmap(11, "lin")
 # h.insert(2, 11)

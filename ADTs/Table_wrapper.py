@@ -56,6 +56,9 @@ class Table:
         elif self.type == "binTree":
             self.data.insert(key, content)
 
+        elif self.type == "h_lin" or self.type == "h_quad" or self.type == "h_sep":
+            self.data.insert(content, key)
+
     def delete(self, key=None):
         """
         delete een item uit de adt, welke hangt af van het type natuurlijk
