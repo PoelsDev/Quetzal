@@ -21,11 +21,17 @@ class Stock:
         subtype: welk soort shot of topping
         """
         if type == "shot":
-            #self.shots.traverse(subtype)
+            #self.shots.traverse("melk")
+            # self.shots.traverse("wit")
+            # self.shots.traverse("bruin")
+            # self.shots.traverse("zwart")
             return
 
         elif type == "topping":
-            # self.toppings.traverse(subtype)
+            # self.toppings.traverse(marshmallow)
+            # self.toppings.traverse(chili)
+            # self.toppings.traverse(honing)
+
             return
 
         else:
