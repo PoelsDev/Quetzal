@@ -17,10 +17,11 @@ class System:
 
         self.lastSave = None        # last system save, voor eventuele undo
 
-    def generateRapport(self):
+    def generateHTML(self):
         """
-        maakt een html file aan met gegevens
+        Dit maakt een html-file aan voor de gegevens.
         """
+
 
     def __stringToIntVal(self, s):
         """
