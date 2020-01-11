@@ -14,7 +14,12 @@ class Stock:
         self.honing = Table("stack")
         self.chili = Table("stack")
         self.marshmallow = Table("stack")
-
+        self.cwit = 0
+        self.czwart = 0
+        self.cbruin = 0
+        self.choning = 0
+        self.cchili = 0
+        self.cmarshmallow = 0
     def count(self, type, subtype=None):
         """
         Bepaalt het aantal aanwezige items in de stock
@@ -48,23 +53,37 @@ class Stock:
     def addToStock(self, itemType, itemSubType, itemDate, count):
         if itemType == "shot":
             while count > 0:
-                searchkey = itemDate + str(count)
-                shot = Cshot(itemSubType, itemDate, searchkey)
                 if itemType == "wit":
+                    searchkey = itemDate + str(self.cwit)
+                    shot = Cshot(itemSubType, itemDate, searchkey)
                     self.wit.insert(shot)
+                    self.cwit += 1
                 elif itemType == "zwart":
+                    searchkey = itemDate + str(self.czwart)
+                    shot = Cshot(itemSubType, itemDate, searchkey)
                     self.zwart.insert(shot)
+                    self.czwart += 1
                 elif itemType == "bruin":
+                    searchkey = itemDate + str(self.cbruin)
+                    shot = Cshot(itemSubType, itemDate, searchkey)
                     self.bruin.insert(shot)
+                    self.cbruin += 1
                 count -= 1
         else:
             while count > 0:
-                searchkey = itemDate + str(count)
-                item = Ingredient(itemType, itemDate, searchkey)
                 if itemType == "honing":
+                    searchkey = itemDate + str(self.choning)
+                    item = Ingredient(itemType, itemDate, searchkey)
                     self.honing.insert(item)
+                    self.choning += 1
                 elif itemType == "marshmallow":
+                    searchkey = itemDate + str(self.cmarshmallow)
+                    item = Ingredient(itemType, itemDate, searchkey)
                     self.marshmallow.insert(item)
+                    self.cmarshmallow += 1
                 elif itemType == "chili":
+                    searchkey = itemDate + str(self.cchili)
+                    item = Ingredient(itemType, itemDate, searchkey)
                     self.chili.insert(item)
+                    self.cchili += 1
                 count -= 1

@@ -2,7 +2,7 @@ class Ingredient:
     def __init__(self, type, vervaldatum, searchkey):
         self.vervaldatum = int(vervaldatum)
         self.type = type
-        self.searchkey = searchkey
+        self.searchkey = int(searchkey)
         if type == "chili":
             self.prijs = 0.25
         elif type == "honing":

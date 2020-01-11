@@ -271,9 +271,8 @@ class System:
                 for i in range(5, wordCount):
                     date += command[i]
 
-                for i in range(amount):
-                    shot = Cshot(subType, date)
-                    self.stock.shots.insert(shot, int(date))
+                self.stock.addToStock("stock", subType, date, amount)
+
                 return 1
             elif command[2] == "honing" or command[2] == "chili" or command[2] == "marshmallow":
                 subtype = command[2]
@@ -283,9 +282,7 @@ class System:
                 for i in range(4, wordCount):
                     date += command[i]
 
-                for i in range(amount):
-                    topping = Ingredient(subtype, date)
-                    self.stock.toppings.insert(topping, int(date))
+                self.stock.addToStock(subtype, None, date, amount)
 
                 return 1
 
