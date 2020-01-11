@@ -170,6 +170,7 @@ class System:
 
             order = Bestelling(user, date, ingredients)
             self.bestellingen.insert(order, self.__stringToIntVal(order.ID))
+            self.nieuweBestellingen.append(order)
             return 1
 
         elif command[1] == "stock":
@@ -210,6 +211,10 @@ class System:
 
 
     def update(self):
+        """
+        wordt elke nieuwe time unit opgeroepen. Updated de progress
+        :return:
+        """
         for w in range(len(self.actieve_Werknemers)):
             werker = self.actieve_Werknemers[w]
             if werker.workOrder():
@@ -222,10 +227,12 @@ class System:
             werker.giveOrder(bestelling)
             self.actieve_Werknemers.append(werker)
 
+        # maakt de lijst met nieuwe bestellingen leeg
+        while not len(self.nieuweBestellingen) == 0:
+            self.nieuweBestellingen.pop()
 
 
-        # check for orders -> check if available workers -> assign
-        # progress workers current job -> if done, put back on free workers
+
 
     def systemRun(self, inputFile):
         """
@@ -255,7 +262,6 @@ class System:
                     elif initialising and word != "start":  # als in init false, elke lijn in __parseInit steken
                         self.__parseInitStock(lines[line])
                         break
-
 
                     if word == "init":
                         initialising = True
