@@ -6,10 +6,12 @@
     * System -> link tussen alle objecten
 2. Extra Objects
     * Stock -> functions
+        * Verwijderen van items uit stock na bestelling
 3. Traverse aanpassen (lijst returnen)
-4. Filter functie voor ingrediënt & shots
-5. Wrappers aanpassen aan ADTs
-6. Log (HTML)
+    * Enkel BST
+4. Wrappers aanpassen aan ADTs
+    * Enkel BST (& ADTs van Tjenne?)
+5. Log (HTML)
 
 ### DONE:
 1. Geavanceerde ADTs
