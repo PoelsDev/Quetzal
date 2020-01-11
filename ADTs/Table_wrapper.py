@@ -84,7 +84,7 @@ class Table:
         elif self.type == "dlc":
             self.data.delete(key)
         elif self.type == "binTree":
-            self.data.delete(key)
+            self.data.searchTreeDelete(key)
         elif self.type == "23":
             self.data.deleteItem(key)
         elif self.type == "234":
@@ -128,7 +128,7 @@ class Table:
         elif self.type == "dlc":
             self.data.retrieve(key)
         elif self.type == "binTree":
-            self.data.find(key)
+            return self.data.searchTreeRetrieve(key)
         elif self.type == "23":
             self.data.retrieveItem(key)
         elif self.type == "234":
@@ -153,7 +153,7 @@ class Table:
         elif self.type == "dlc":
             return self.data.traverse()
         elif self.type == "binTree":
-            self.data.inorderTraverse()
+            return self.data.inorderTraverse()
         elif self.type == "23":
             return self.data.traverse()
         elif self.type == "234":

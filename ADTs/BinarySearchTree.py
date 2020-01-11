@@ -237,7 +237,7 @@ class BinarySearchTree:
 
         return content
 
-    def toDot(self, filename):
+    def print(self, filename):
         open(filename, "w+")
         with open(filename, 'w') as file:
             self.toDotFile(file)
