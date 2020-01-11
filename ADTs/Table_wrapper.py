@@ -157,6 +157,7 @@ class Table:
         elif self.type == "234":
             return self.data.inorder()
         elif self.type == "h_lin" or self.type == "h_quad" or self.type == "h_sep":
+            l = self.data.traverse()
             return self.data.traverse()
 
 

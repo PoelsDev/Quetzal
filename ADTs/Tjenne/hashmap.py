@@ -317,7 +317,8 @@ class Hashmap:
                 if self.map[i] is not None:
                     for item in self.map[i].traverse():
                         allContent.append(item)
-            return allContent
+
+        return allContent
 
 
 
