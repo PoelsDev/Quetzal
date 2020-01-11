@@ -71,7 +71,6 @@ class System:
         # effectief toevoegen van items aan de stock
         self.stock.addToStock(itemType, itemSubType, itemDate, itemCount)
 
-
     def __parseInitUser(self, line):
         voornaam = ""
         achternaam = ""
@@ -148,7 +147,6 @@ class System:
         :return: 0 als ongeldige input, 1 als command correct uitgevoerd is
         """
 
-
         command = self.__splitCommand(line)
         wordCount = len(command)
 
@@ -205,8 +203,6 @@ class System:
             return 0
 
     def systemRun(self, inputFile):
-
-
         """
         parsed een input file, en voert de commands uit
         """
