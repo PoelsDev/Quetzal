@@ -66,10 +66,14 @@ class Stack:
         +traverse()
         Doorloopt de Stack in volgorde van top tot bottom.
         """
+        lst = []
         temp = self.listHead
         while temp != None:
-            print(temp.value)
+            #print(temp.value)
+            lst.append(temp)
             temp = temp.next
+
+        return lst
 
     def generateDot(self):
         """
