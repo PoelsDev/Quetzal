@@ -32,7 +32,7 @@ class Stock:
                 count = len(self.zwart.traverse())
             elif subtype == "bruin":
                 count = len(self.bruin.traverse())
-        elif type == "mashmallow":
+        elif type == "marshmallow":
             count = len(self.marshmallow.traverse())
         elif type == "chili":
             count = len(self.chili.traverse())
