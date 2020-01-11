@@ -380,7 +380,7 @@ class System:
             self.__commandHandler(line)
 
         # het verder afwerken eens dat alle commands gebeurt zijn
-        while not (len(self.actieve_Werknemers) == 0 and self.bestellingen.isEmpty()) :
+        while not (len(self.actieve_Werknemers) == 0 and self.bestellingen.isEmpty()):
             self.update()
             self.time += 1
         self.updateHTML()
