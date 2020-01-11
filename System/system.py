@@ -31,7 +31,74 @@ class System:
         """
         +updateHTML() update de html string op basis van de voorbije gebeurtenissen (dit elke nieuwe tijdseenheid)
         """
-        self.html_string = ""
+        newline = "\n"
+        # TABLE HEADER
+        if self.time == 0:
+            self.html_string += "<tr>"
+            self.html_string += "<th> tijdstip </th>" + newline
+            self.html_string += "<th> Stack </th>" + newline
+            for werknemer in self.werkNemers.traverse():
+                self.html_string += f"<th> {werknemer.voornaam} {werknemer.achternaam} </th>" + newline
+            self.html_string += "<th>Nieuwe Bestellingen</th>" + newline
+            self.html_string += "<th>Wachtende Bestellingen</th>" + newline
+            self.html_string += "<th>Wit</th>" + newline
+            self.html_string += "<th>Melk</th>" + newline
+            self.html_string += "<th>Bruin</th>" + newline
+            self.html_string += "<th>Zwart</th>" + newline
+            self.html_string += "<th>Honing</th>" + newline
+            self.html_string += "<th>Marshmallow</th>" + newline
+            self.html_string += "<th>Chili</th>" + newline
+
+        # TABLE DATA
+        self.html_string += "<tr>" + newline
+        # Tijdstip
+        self.html_string += "<td>" + str(self.time) + "</td>" + newline
+        self.html_string += "<td>|"
+        # Werknemer Stack
+        lst1 = self.vrije_Werknemers.traverse()
+        for item in reversed(lst1):
+            self.html_string += str(item.getKey()) + " "
+        self.html_string += "</td>" + newline
+        lst2 = self.werkNemers.traverse()
+        # Workorders
+        for werknemer in lst2:
+            for werknemer1 in lst1:
+                if werknemer.voornaam == werknemer1.voornaam and werknemer.achternaam == werknemer1.achternaam:
+                    self.html_string += "<td>" + str(werknemer.currentOrder.getKey()) + "</td>" + newline
+                else:
+                    self.html_string += "<td></td>" + newline
+        # Nieuwe bestellingen
+        self.html_string += "<td>"
+        for bestelling in self.nieuweBestellingen:
+            if self.nieuweBestellingen[len(self.nieuweBestellingen)-1] != bestelling:
+                self.html_string += str(bestelling.getKey()) + ", "
+            else:
+                self.html_string += str(bestelling.getKey())
+        self.html_string += "</td>" + newline
+
+        # Wachtende bestellingen
+        self.html_string += "<td>"
+        for bestelling in self.bestellingen.traverse():
+            if self.bestellingen.traverse()[len(self.bestellingen.traverse())-1] != bestelling:
+                self.html_string += str(bestelling.getKey()) + ", "
+            else:
+                self.html_string += str(bestelling.getKey())
+        self.html_string += "</td>" + newline
+        # Wit
+        self.html_string += "<td>" + str(self.stock.count("shot", "wit")) + "</td>" + newline
+        # Melk
+        self.html_string += "<td>" + str(self.stock.count("shot", "melk")) + "</td>" + newline
+        # Bruin
+        self.html_string += "<td>" + str(self.stock.count("shot", "bruin")) + "</td>" + newline
+        # Zwart
+        self.html_string += "<td>" + str(self.stock.count("shot", "zwart")) + "</td>" + newline
+        # Honing
+        self.html_string += "<td>" + str(self.stock.count("honing")) + "</td>" + newline
+        # Marshmallow
+        self.html_string += "<td>" + str(self.stock.count("marshmallow")) + "</td>" + newline
+        # Chili
+        self.html_string += "<td>" + str(self.stock.count("chili")) + "</td>" + newline
+        self.html_string += "</tr>" + newline
 
 
     def generateHTML(self):
@@ -39,11 +106,15 @@ class System:
         Dit maakt een html-file aan voor de gegevens.
         """
         output = ""
-        newline = "\n"
+        output += "<html>"
+        output += "<body>"
+        output += "<table>"
+        output += self.html_string
+        output += "</table>"
+        output += "</body>"
+        output += "</html"
         with open(str(f"Log{self.html_count}.html"), "w+") as f:
-            output += "<html>"
-            output += "<body>"
-            #TODO: table head + finish
+            f.write(output)
         self.html_count += 1
 
 
