@@ -230,11 +230,12 @@ class BinarySearchTree:
         content = []
         if not self.isEmpty():
             if self.leftTree != None:
-                self.leftTree.inorderTraverse()
-            content.append(self.root.searchKey.getKey())
+                content = content + self.leftTree.inorderTraverse()
+            content.append(self.root.searchKey)
             if self.rightTree != None:
-                self.rightTree.inorderTraverse()
-            return content
+                content = content + self.rightTree.inorderTraverse()
+
+        return content
 
     def toDot(self, filename):
         open(filename, "w+")
