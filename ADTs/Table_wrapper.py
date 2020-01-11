@@ -1,10 +1,11 @@
 from ADTs.BinarySearchTree import BinarySearchTree
 from ADTs.Tjenne.Queuez import Queue
 from ADTs.Thibault.Stack import Stack
+from ADTs.Thibault.TwoThreeFourTree import TwoThreeFourTree
 from ADTs.Tjenne.heap import Heap
 from ADTs.Tjenne.hashmap import Hashmap
 from ADTs.Mounir.DLC import DLC
-"234 tree"
+
 
 class Table:
 
@@ -34,6 +35,8 @@ class Table:
             self.data = Hashmap(51, "quad")
         elif type == "h_sep":
             self.data = Hashmap(51, "sep")
+        elif type == "234":
+            self.data = TwoThreeFourTree()
         else:
             print("Unknown type: " + type)
 
@@ -55,9 +58,10 @@ class Table:
             self.data.insert(content, key)
         elif self.type == "binTree":
             self.data.insert(key, content)
-
         elif self.type == "h_lin" or self.type == "h_quad" or self.type == "h_sep":
             self.data.insert(content, key)
+        elif self.type == "234":
+            self.data.insertItem(content)
 
     def delete(self, key=None):
         """
@@ -75,6 +79,8 @@ class Table:
             self.data.pop(key)
         elif self.type == "binTree":
             self.data.delete(key)
+        elif self.type == "234":
+            self.data.deleteItem(key)
 
     def print(self):
         """
@@ -112,6 +118,8 @@ class Table:
             self.data.retrieve(key)
         elif self.type == "binTree":
             self.data.find(key)
+        elif self.type == "234":
+            return self.data.retrieveItem(key)
 
 
     def traverse(self):
@@ -135,6 +143,8 @@ class Table:
             return
         elif self.type == "binTree":
             self.data.inorderTraverse()
+        elif self.type == "234":
+            return self.data.inorder()
 
 
 

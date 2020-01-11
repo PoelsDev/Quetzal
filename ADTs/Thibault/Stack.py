@@ -49,9 +49,9 @@ class Stack:
             self.listHead = temp.next
             return temp.value, True
 
-    def getTop(self):
+    def top(self):
         """
-        +getTop(): stackItemType, boolean
+        +top(): stackItemType, boolean
         Geeft het bovenste item van de stack.
         :return: Returnt het item (None als de stack leeg is) en een succes Boolean
         Pre-condities: geen
@@ -70,7 +70,7 @@ class Stack:
         temp = self.listHead
         while temp != None:
             #print(temp.value)
-            lst.append(temp)
+            lst.append(temp.value)
             temp = temp.next
 
         return lst
@@ -95,9 +95,9 @@ class Stack:
 
         return dot
 
-    def toDot(self, filename):
+    def print(self, filename):
         """
-        +toDot()
+        +print()
         Geeft de .dot code van de stack.
         """
         with open(filename, "w+") as f:

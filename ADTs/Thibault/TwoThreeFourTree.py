@@ -857,9 +857,9 @@ class TwoThreeFourTree:
 
             return dot
 
-    def toDot(self, filename):
+    def print(self, filename):
         """
-        +toDot()
+        +print()
         Deze functie genereert een volwaardige dot-file aan de hand van de generateDot() functie.
         """
         with open(filename, "w+") as f:
