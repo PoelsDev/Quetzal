@@ -3,6 +3,7 @@ from System.StockObjects.Stock import *
 from ADTs.Table_wrapper import *
 from System.Gebruiker import *
 from System.Werknemer import *
+from System.Bestelling import *
 
 
 class System:
@@ -141,6 +142,11 @@ class System:
 
 
     def __commandHandler(self, line):
+        """
+        Behandelt de commands na dat het systeem gestart is (stock, log, bestel)
+        :param line: de command die behandelt moet worden
+        :return: 0 als ongeldige input, 1 als command correct uitgevoerd is
+        """
         time = 0
         user = ""
         ingredients = []
@@ -149,27 +155,54 @@ class System:
         command = self.__splitCommand(line)
         wordCount = len(command)
 
+        if command[1] == "bestel":
+            time = int(command[1])
+            user = command[2]
 
+            for i in range(3, wordCount):
+                if 2 < i < wordCount - 5:
+                    ingredients.append(command[i])
+                elif i >= wordCount - 5:
+                    date += command[i]
 
-        for i in range(wordCount):
-            if i == 1:
-                time = int(command[i])
-            elif i == 2:
-                user = command[i]
-            elif 2 < i < wordCount - 5:
-                ingredients.append(command[i])
-            elif i >= wordCount - 5:
-                date += command[i]
+            order = Bestelling(user, date, ingredients)
+            return 1
 
+        elif command[1] == "stock":
+            if command[2] == "shot":
+                subType = command[3]
+                amount = int(command[4])
+                date = ""
 
+                for i in range(5, wordCount):
+                    date += command[i]
 
+                for i in range(amount):
+                    shot = Cshot(subType, date)
+                    self.stock.shots.insert(shot)
+                    return 1
+            elif command[2] == "honing" or command[2] == "chili" or command[2] == "marshmallow":
+                subtype = command[2]
+                amount = int(command[3])
+                date = ""
 
+                for i in range(4, wordCount):
+                    date += command[i]
 
+                for i in range(amount):
+                    topping = Ingredient(subtype, date)
+                    self.stock.toppings.insert(topping, date)
 
+                return 1
 
+        elif command[1] == "log":
+            self.generateHTML()
+            print("Log generated")
+            return 1
 
-
-
+        else:
+            print("Unknown command")
+            return 0
 
     def systemRun(self, inputFile):
 
@@ -214,12 +247,7 @@ class System:
 
         # vanaf hier worden de commands uitgevoerd
         for line in commands:
-            command = self.__splitCommand(line)
-            if command[1] == "bestel":
-                print("bestel")
-
-
-        self.time += 1
+            self.__commandHandler(line)
 
 
 

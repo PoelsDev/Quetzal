@@ -1,11 +1,23 @@
 class Bestelling:
-    def __init__(self, credits, gebruikersid, timestamp, chocolademelk_id, afgehaald, next=None):
-        self.credits = credits
+    def __init__(self, gebruikersid, timestamp, ingredienten):
+        self.credits = 5 + len(ingredienten)
         self.gebruikersid = gebruikersid
         self.timestamp = timestamp
-        self.chocolademelk_id = chocolademelk_id
-        self.afgehaald = afgehaald
-        self.next = next
+        self.ID = gebruikersid + str(self.credits)
+        self.afgehaald = False
+        self.ingredients = ingredienten
+        self.prijs = 2
+        for ingredient in ingredienten:
+            if ingredient.type == "melk" or ingredient.type == "zwart" or ingredient.type == "wit" or ingredient.type == "bruin":
+                self.prijs += 1
+            elif ingredient.type == "honing":
+                self.prijs += 0.5
+            elif ingredient.type == "chili":
+                self.prijs += 0.25
+            elif ingredient.type == "marshmallow":
+                self.prijs += 0.75
+
+
 
     # def add_Next(self, bestelling):
     #     """
