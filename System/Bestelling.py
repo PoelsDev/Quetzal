@@ -8,13 +8,13 @@ class Bestelling:
         self.ingredients = ingredienten
         self.prijs = 2
         for ingredient in ingredienten:
-            if ingredient.type == "melk" or ingredient.type == "zwart" or ingredient.type == "wit" or ingredient.type == "bruin":
+            if ingredient == "melk" or ingredient == "zwart" or ingredient == "wit" or ingredient == "bruin":
                 self.prijs += 1
-            elif ingredient.type == "honing":
+            elif ingredient == "honing":
                 self.prijs += 0.5
-            elif ingredient.type == "chili":
+            elif ingredient == "chili":
                 self.prijs += 0.25
-            elif ingredient.type == "marshmallow":
+            elif ingredient == "marshmallow":
                 self.prijs += 0.75
 
 

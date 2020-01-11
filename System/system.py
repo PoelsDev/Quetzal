@@ -147,16 +147,15 @@ class System:
         :param line: de command die behandelt moet worden
         :return: 0 als ongeldige input, 1 als command correct uitgevoerd is
         """
-        time = 0
-        user = ""
-        ingredients = []
-        date = ""
+
 
         command = self.__splitCommand(line)
         wordCount = len(command)
 
         if command[1] == "bestel":
-            time = int(command[1])
+            ingredients = []
+            date = ""
+            time = int(command[0])
             user = command[2]
 
             for i in range(3, wordCount):
@@ -166,6 +165,7 @@ class System:
                     date += command[i]
 
             order = Bestelling(user, date, ingredients)
+            self.bestellingen.insert(order, self.__stringToIntVal(order.ID))
             return 1
 
         elif command[1] == "stock":
@@ -179,8 +179,8 @@ class System:
 
                 for i in range(amount):
                     shot = Cshot(subType, date)
-                    self.stock.shots.insert(shot)
-                    return 1
+                    self.stock.shots.insert(shot, int(date))
+                return 1
             elif command[2] == "honing" or command[2] == "chili" or command[2] == "marshmallow":
                 subtype = command[2]
                 amount = int(command[3])
@@ -191,7 +191,7 @@ class System:
 
                 for i in range(amount):
                     topping = Ingredient(subtype, date)
-                    self.stock.toppings.insert(topping, date)
+                    self.stock.toppings.insert(topping, int(date))
 
                 return 1
 
