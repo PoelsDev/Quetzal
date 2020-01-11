@@ -84,7 +84,7 @@ class Queue:
                 allContent.append(current.content)
                 current = current.next
             allContent.append(current.content)
-            return allContent
+        return allContent
 
 
     def destroy(self):
