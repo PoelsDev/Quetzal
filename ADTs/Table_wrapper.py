@@ -4,6 +4,7 @@ from ADTs.Thibault.Stack import Stack
 from ADTs.Tjenne.heap import Heap
 from ADTs.Tjenne.hashmap import Hashmap
 from ADTs.Mounir.DLC import DLC
+from ADTs.Mounir.TwoThreeTree import Tree
 "234 tree"
 
 class Table:
@@ -26,6 +27,8 @@ class Table:
             self.data = Queue()
         elif type == "dlc":
             self.data = DLC()
+        elif type == "23":
+            self.data = Tree()
         elif type == "binTree":
             self.data = BinarySearchTree()
         elif type == "h_lin":
@@ -54,8 +57,9 @@ class Table:
         elif self.type == "dlc":
             self.data.insert(content, key)
         elif self.type == "binTree":
-            self.data.insert(key, content)
-
+            self.data.searchTreeInsert(content)
+        elif self.type == "23":
+            self.data.insertItem(content)
         elif self.type == "h_lin" or self.type == "h_quad" or self.type == "h_sep":
             self.data.insert(content, key)
 
@@ -72,9 +76,11 @@ class Table:
         elif self.type == "queue":
             self.data.dequeue()
         elif self.type == "dlc":
-            self.data.pop(key)
+            self.data.delete(key)
         elif self.type == "binTree":
             self.data.delete(key)
+        elif self.type == "23":
+            self.data.deleteItem(key)
 
     def print(self):
         """
@@ -83,7 +89,10 @@ class Table:
         pre: Adt moet correct aangemaakt zijn
         post: None
         """
-        self.data.print()
+        if self.type == "dlc" or self.type == "23":
+            self.data.createDot()
+        else:
+            self.data.print()
 
     def isEmpty(self):
         """
@@ -112,6 +121,8 @@ class Table:
             self.data.retrieve(key)
         elif self.type == "binTree":
             self.data.find(key)
+        elif self.type == "23":
+            self.data.retrieveItem(key)
 
 
     def traverse(self):
@@ -135,6 +146,8 @@ class Table:
             return
         elif self.type == "binTree":
             self.data.inorderTraverse()
+        elif self.type == "23":
+            self.data.traverse()
 
 
 

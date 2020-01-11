@@ -896,6 +896,24 @@ class Node:
             return self
         return self.left.goleft()
 
+    def traverse(self, L):
+        if len(self.root) == 1:
+            if self.left:
+                return self.left.traverse(L)
+            L.append(self.root[0])
+            if self.right:
+                return self.right.traverse(L)
+        elif len(self.root) == 2:
+            if self.left:
+                return self.left.traverse(L)
+            L.append(self.root[0])
+            if self.mid:
+                return self.left.traverse(L)
+            L.append(self.root[1])
+            if self.right:
+                return self.mid.traverse(L)
+        return L
+
 class Tree:
     def __init__(self):
         self.root = None
@@ -943,7 +961,7 @@ class Tree:
         if not self.isEmpty():
             if self.root.left is None and self.root.mid is None and self.root.right is None:
                 if len(self.root.root) == 1:
-                    print(self.root.getKey())
+                    print(self.root.root[0].getKey())
                 else:
                     print('"' + str(self.root.root[0].getKey()), "|", str(self.root.root[1].getKey()) + '"')
             else:
@@ -956,7 +974,7 @@ class Tree:
         if not self.isEmpty():
             if self.root.left is None and self.root.mid is None and self.root.right is None:
                 if len(self.root.root) == 1:
-                    f.write(str(self.root.getKey()) + "\n")
+                    f.write(str(self.root.root[0].getKey()) + "\n")
                 else:
                     f.write('"' + str(self.root.root[0].getKey()) + " | " + str(self.root.root[1].getKey()) + '"\n')
             else:
@@ -979,6 +997,12 @@ class Tree:
         self.root.inorder()
         print("_____________________________________________________")
 
+    def traverse(self):
+        L = []
+        if self.root is not None:
+            return self.root.traverse(L)
+        else:
+            return L
 
 class Test:
     def __init__(self, key):
@@ -989,3 +1013,11 @@ class Test:
 
     def getKey(self):
         return self.key
+
+b = Tree()
+b.insertItem(12)
+b.insertItem(14)
+b.insertItem(11)
+
+b.printTree()
+print(b.traverse())

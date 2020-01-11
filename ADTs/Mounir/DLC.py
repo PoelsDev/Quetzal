@@ -80,6 +80,20 @@ class NodeDLC:
                 next = next.next
                 index += 1
 
+    def traverse(self, L, head):
+        L.append(self.value)
+        if self.next is None or self.next == head:
+            return L
+        else:
+            return self.next.traverse(L, head)
+
+    def retrieve(self, head, key):
+        if self.value.getKey() == key:
+            return self.value
+        elif self.next == head or self.next is None:
+            return None
+        else:
+            return self.next.retrieve(head, key)
 
 class DLC:
     def __init__(self):
@@ -159,6 +173,12 @@ class DLC:
             self.size -= 1
             return True
 
+    def retrieve(self, key):
+        if self.head is None:
+            return None
+        else:
+            return self.head.retrieve(self.head, key)
+
     def print(self):
         print("digraph K {")
         if self.head is not None:
@@ -184,6 +204,11 @@ class DLC:
             for i in range(self.size):
                 self.head.soort(self.head, self.size)
         return True
+
+    def traverse(self):
+        L = []
+        if self.head is not None:
+            return self.head.traverse(L, self.head)
 
 class Test:
     def __init__(self, key):
