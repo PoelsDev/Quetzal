@@ -55,7 +55,7 @@ class System:
         self.html_string += "<td>" + str(self.time) + "</td>" + newline
         self.html_string += "<td>|"
         # Werknemer Stack
-        lst1 = self.vrije_Werknemers.traverse()
+        lst1 = self.actieve_Werknemers
         for item in reversed(lst1):
             self.html_string += str(item.getKey()) + " "
         self.html_string += "</td>" + newline
