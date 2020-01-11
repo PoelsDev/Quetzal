@@ -108,6 +108,7 @@ class System:
         output = ""
         output += "<html>"
         output += "<body>"
+        output += "<style> table {border-collapse: collapse;} \n table, td, th {border: 1px solid black; empty-cells:show;} </style>"
         output += "<table>"
         output += self.html_string
         output += "</table>"
