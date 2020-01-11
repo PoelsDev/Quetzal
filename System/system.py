@@ -303,22 +303,30 @@ class System:
             return 0
 
 
-    def update(self):
+    def update(self, updateTime):
         """
         wordt elke nieuwe time unit opgeroepen. Updated de progress
         :return:
         """
 
-        # update de html string
-        self.updateHTML()
+        if updateTime:
 
-        amountFreed = 0
-        for w in range(len(self.actieve_Werknemers)):
-            werker = self.actieve_Werknemers[w-amountFreed]
-            if werker.workOrder():
-                self.vrije_Werknemers.insert(werker, werker.id)
-                self.actieve_Werknemers.pop(w-amountFreed)
-                amountFreed += 1
+            # update de html string
+            self.updateHTML()
+
+            amountFreed = 0
+            for w in range(len(self.actieve_Werknemers)):
+                werker = self.actieve_Werknemers[w-amountFreed]
+                if werker.workOrder():
+                    self.vrije_Werknemers.insert(werker, werker.id)
+                    self.actieve_Werknemers.pop(w-amountFreed)
+                    amountFreed += 1
+
+            # maakt de lijst met nieuwe bestellingen leeg
+            while not len(self.nieuweBestellingen) == 0:
+                self.nieuweBestellingen.pop()
+
+
 
         while not self.bestellingen.isEmpty() and not self.vrije_Werknemers.isEmpty():
             werker = self.vrije_Werknemers.delete()[0]
@@ -326,9 +334,7 @@ class System:
             werker.giveOrder(bestelling)
             self.actieve_Werknemers.append(werker)
 
-        # maakt de lijst met nieuwe bestellingen leeg
-        while not len(self.nieuweBestellingen) == 0:
-            self.nieuweBestellingen.pop()
+
 
 
 
@@ -373,15 +379,19 @@ class System:
 
         # vanaf hier worden de commands uitgevoerd
         for line in commands:
+
             if int(line[0]) > self.time:
                 for i in range(self.time, int(line[0])):
-                    self.update()
+                    self.update(True)
                 self.time = int(line[0])
+
             self.__commandHandler(line)
+            self.update(False)
+
 
         # het verder afwerken eens dat alle commands gebeurt zijn
         while not (len(self.actieve_Werknemers) == 0 and self.bestellingen.isEmpty()):
-            self.update()
+            self.update(True)
             self.time += 1
 
 
