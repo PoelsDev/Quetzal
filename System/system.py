@@ -120,7 +120,7 @@ class System:
         output += "</table>"
         output += "</body>"
         output += "</html>"
-        with open(str(f"Log{self.html_count}.html"), "w+") as f:
+        with open(str(f"Log{self.time}.html"), "w+") as f:
             f.write(output)
         self.html_count += 1
 
