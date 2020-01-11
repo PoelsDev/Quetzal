@@ -372,9 +372,10 @@ class System:
             self.__commandHandler(line)
 
         # het verder afwerken eens dat alle commands gebeurt zijn
-        while not self.bestellingen.isEmpty():
-            self.time += 1
+        while not self.bestellingen.isEmpty() and len(self.actieve_Werknemers) == 0:
             self.update()
+            self.time += 1
+        self.generateHTML()
 
 
 
