@@ -140,6 +140,37 @@ class System:
         return splittedCommand
 
 
+    def __commandHandler(self, line):
+        time = 0
+        user = ""
+        ingredients = []
+        date = ""
+
+        command = self.__splitCommand(line)
+        wordCount = len(command)
+
+
+
+        for i in range(wordCount):
+            if i == 1:
+                time = int(command[i])
+            elif i == 2:
+                user = command[i]
+            elif 2 < i < wordCount - 5:
+                ingredients.append(command[i])
+            elif i >= wordCount - 5:
+                date += command[i]
+
+
+
+
+
+
+
+
+
+
+
     def systemRun(self, inputFile):
 
 
@@ -176,8 +207,6 @@ class System:
                         initialising = True
                     elif word == "start":
                         initialising = False
-
-
 
                     else:
                         commands.append(lines[line])
