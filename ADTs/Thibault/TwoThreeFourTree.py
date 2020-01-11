@@ -21,28 +21,28 @@ class TwoThreeFourTree:
             if self.getNodeAmount() == 1:
                 if self.subtrees[0] is not None:
                     lst = lst + self.subtrees[0].inorder()
-                lst.append(self.root.keys[0].key)
+                lst.append(self.root.keys[0])
                 if self.subtrees[1] is not None:
                     lst = lst + self.subtrees[1].inorder()
             elif self.getNodeAmount() == 2:
                 if self.subtrees[0] is not None:
                     lst = lst + self.subtrees[0].inorder()
-                lst.append(self.root.keys[0].key)
+                lst.append(self.root.keys[0])
                 if self.subtrees[1] is not None:
                     lst = lst + self.subtrees[1].inorder()
-                lst.append(self.root.keys[1].key)
+                lst.append(self.root.keys[1])
                 if self.subtrees[2] is not None:
                     lst = lst + self.subtrees[2].inorder()
             elif self.getNodeAmount() == 3:
                 if self.subtrees[0] is not None:
                     lst = lst + self.subtrees[0].inorder()
-                lst.append(self.root.keys[0].key)
+                lst.append(self.root.keys[0])
                 if self.subtrees[1] is not None:
                     lst = lst + self.subtrees[1].inorder()
-                lst.append(self.root.keys[1].key)
+                lst.append(self.root.keys[1])
                 if self.subtrees[2] is not None:
                     lst = lst + self.subtrees[2].inorder()
-                lst.append(self.root.keys[2].key)
+                lst.append(self.root.keys[2])
                 if self.subtrees[3] is not None:
                     lst = lst + self.subtrees[3].inorder()
 
@@ -857,9 +857,9 @@ class TwoThreeFourTree:
 
             return dot
 
-    def toDot(self, filename):
+    def print(self, filename):
         """
-        +toDot()
+        +print()
         Deze functie genereert een volwaardige dot-file aan de hand van de generateDot() functie.
         """
         with open(filename, "w+") as f:
