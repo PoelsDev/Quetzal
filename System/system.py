@@ -55,7 +55,7 @@ class System:
         self.html_string += "<td>" + str(self.time) + "</td>" + newline
         self.html_string += "<td>|"
         # Werknemer Stack
-        for item in reversed(self.actieve_Werknemers):
+        for item in reversed(self.vrije_Werknemers.traverse()):
             self.html_string += str(item.getKey()) + " "
         self.html_string += "</td>" + newline
         lst2 = self.werkNemers.traverse()
@@ -64,7 +64,7 @@ class System:
             if werknemer.currentOrder != None:
                 self.html_string += "<td>" + str(werknemer.currentOrder.getKey()) + "</td>" + newline
             else:
-                self.html_string += "<td></td>"
+                self.html_string += "<td></td>" + newline
                 
         # Nieuwe bestellingen
         if len(self.nieuweBestellingen) != 0:
@@ -380,7 +380,7 @@ class System:
             self.__commandHandler(line)
 
         # het verder afwerken eens dat alle commands gebeurt zijn
-        while not (len(self.actieve_Werknemers) == 0 and  self.bestellingen.isEmpty()) :
+        while not (len(self.actieve_Werknemers) == 0 and self.bestellingen.isEmpty()) :
             self.update()
             self.time += 1
         self.updateHTML()
