@@ -10,12 +10,14 @@ class Stock:
     def __init__(self):
         self.wit = Table("stack")           # adt hier aanpassen
         self.zwart = Table("stack")
+        self.melk = Table("stack")
         self.bruin = Table("stack")
         self.honing = Table("stack")
         self.chili = Table("stack")
         self.marshmallow = Table("stack")
         self.cwit = 0
         self.czwart = 0
+        self.cmelk = 0
         self.cbruin = 0
         self.choning = 0
         self.cchili = 0
@@ -37,6 +39,8 @@ class Stock:
                 count = len(self.zwart.traverse())
             elif subtype == "bruin":
                 count = len(self.bruin.traverse())
+            elif subtype == "melk":
+                count = len(self.melk.traverse())
         elif type == "marshmallow":
             count = len(self.marshmallow.traverse())
         elif type == "chili":
@@ -53,21 +57,27 @@ class Stock:
     def addToStock(self, itemType, itemSubType, itemDate, count):
         if itemType == "shot":
             while count > 0:
-                if itemType == "wit":
+                if itemSubType == "wit":
                     searchkey = itemDate + str(self.cwit)
                     shot = Cshot(itemSubType, itemDate, searchkey)
                     self.wit.insert(shot)
                     self.cwit += 1
-                elif itemType == "zwart":
+                elif itemSubType == "zwart":
                     searchkey = itemDate + str(self.czwart)
                     shot = Cshot(itemSubType, itemDate, searchkey)
                     self.zwart.insert(shot)
                     self.czwart += 1
-                elif itemType == "bruin":
+                elif itemSubType == "bruin":
                     searchkey = itemDate + str(self.cbruin)
                     shot = Cshot(itemSubType, itemDate, searchkey)
                     self.bruin.insert(shot)
                     self.cbruin += 1
+
+                elif itemSubType == "melk":
+                    searchkey = itemDate + str(self.cmelk)
+                    shot = Cshot(itemSubType, itemDate, searchkey)
+                    self.melk.insert(shot)
+                    self.cmelk += 1
                 count -= 1
         else:
             while count > 0:

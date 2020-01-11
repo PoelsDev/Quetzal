@@ -38,7 +38,7 @@ class Bestelling:
         Pre-condities: geen
         Post-condities: de attribuut "timestamp" zal teruggegeven worden.
         """
-        return self.timestamp
+        return self.ID
 
     def __str__(self):
         return f'Bestelling | Credits: {self.credits}, GebruikersID: {self.gebruikersid}, Timestamp: {self.timestamp}, ChocolademelkID: {self.chocolademelk_id}, Afgehaald(True/False): {self.afgehaald}.'
