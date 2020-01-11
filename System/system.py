@@ -71,9 +71,9 @@ class System:
             self.html_string += "<td>"
             for bestelling in self.nieuweBestellingen:
                 if self.nieuweBestellingen[len(self.nieuweBestellingen)-1] != bestelling:
-                    self.html_string += str(bestelling.getKey()) + ", "
+                    self.html_string += str(bestelling.credits) + ", "
                 else:
-                    self.html_string += str(bestelling.getKey())
+                    self.html_string += str(bestelling.credits)
             self.html_string += "</td>" + newline
         else:
             self.html_string += "<td></td>" + newline
