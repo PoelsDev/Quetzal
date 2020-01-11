@@ -76,11 +76,11 @@ class Table:
         :return: True als correct verwijdert, anders false
         """
         if self.type == "stack":
-            self.data.pop()
+           return self.data.pop()
         elif self.type == "heap":
             self.data.delete()
         elif self.type == "queue":
-            self.data.dequeue()
+            return self.data.dequeue()
         elif self.type == "dlc":
             self.data.delete(key)
         elif self.type == "binTree":
@@ -145,11 +145,9 @@ class Table:
         if self.type == "stack":
             return self.data.traverse()
         elif self.type == "heap":
-            # nog niet geïmplementeerd
-            return
+            return self.data.traverse()
         elif self.type == "queue":
-            self.data.traverse()
-            return
+            return self.data.traverse()
         elif self.type == "dlc":
             return self.data.traverse()
         elif self.type == "binTree":
@@ -158,6 +156,8 @@ class Table:
             return self.data.traverse()
         elif self.type == "234":
             return self.data.inorder()
+        elif self.type == "h_lin" or self.type == "h_quad" or self.type == "h_sep":
+            return self.data.traverse()
 
 
 

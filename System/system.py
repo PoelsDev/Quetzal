@@ -13,7 +13,12 @@ class System:
         self.gebruikers = Table("h_lin")         # adt hier aanpassen
 
         self.bestellingen = Table("queue")       # adt hier aanpassen
-        self.actieveWerknemers = Table("stack")
+        self.vrije_Werknemers = Table("stack")
+
+        self.actieve_Werknemers = []
+        self.nieuweBestellingen = []
+
+
         self.time = 0
 
         self.lastSave = None        # last system save, voor eventuele undo
@@ -118,6 +123,7 @@ class System:
         werknemer = Werknemer(id, voornaam, achternaam, workload)
 
         self.werkNemers.insert(werknemer, id)
+        self.vrije_Werknemers.insert(werknemer)
 
 
     def __splitCommand(self, command):
@@ -202,6 +208,25 @@ class System:
             print("Unknown command")
             return 0
 
+
+    def update(self):
+        for w in range(len(self.actieve_Werknemers)):
+            werker = self.actieve_Werknemers[w]
+            if werker.workOrder():
+                self.vrije_Werknemers.insert(werker, werker.id)
+                self.actieve_Werknemers.pop(w)
+
+        while not self.bestellingen.isEmpty() and not self.vrije_Werknemers.isEmpty():
+            werker = self.vrije_Werknemers.delete()[0]
+            bestelling = self.bestellingen.delete()
+            werker.giveOrder(bestelling)
+            self.actieve_Werknemers.append(werker)
+
+
+
+        # check for orders -> check if available workers -> assign
+        # progress workers current job -> if done, put back on free workers
+
     def systemRun(self, inputFile):
         """
         parsed een input file, en voert de commands uit
@@ -243,7 +268,16 @@ class System:
 
         # vanaf hier worden de commands uitgevoerd
         for line in commands:
+            if int(line[0]) > self.time:
+                for i in range(self.time, int(line[0])):
+                    self.update()
+                self.time = int(line[0])
             self.__commandHandler(line)
+
+        # het verder afwerken eens dat alle commands gebeurt zijn
+        while not self.bestellingen.isEmpty():
+            self.time += 1
+            self.update()
 
 
 
