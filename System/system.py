@@ -55,35 +55,41 @@ class System:
         self.html_string += "<td>" + str(self.time) + "</td>" + newline
         self.html_string += "<td>|"
         # Werknemer Stack
-        lst1 = self.actieve_Werknemers
-        for item in reversed(lst1):
+        for item in reversed(self.actieve_Werknemers):
             self.html_string += str(item.getKey()) + " "
         self.html_string += "</td>" + newline
         lst2 = self.werkNemers.traverse()
         # Workorders
         for werknemer in lst2:
-            for werknemer1 in lst1:
-                if werknemer.voornaam == werknemer1.voornaam and werknemer.achternaam == werknemer1.achternaam:
-                    self.html_string += "<td>" + str(werknemer.currentOrder.getKey()) + "</td>" + newline
-                else:
-                    self.html_string += "<td></td>" + newline
-        # Nieuwe bestellingen
-        self.html_string += "<td>"
-        for bestelling in self.nieuweBestellingen:
-            if self.nieuweBestellingen[len(self.nieuweBestellingen)-1] != bestelling:
-                self.html_string += str(bestelling.getKey()) + ", "
+            if werknemer.currentOrder != None:
+                self.html_string += "<td>" + str(werknemer.currentOrder.getKey()) + "</td>" + newline
             else:
-                self.html_string += str(bestelling.getKey())
-        self.html_string += "</td>" + newline
+                self.html_string += "<td></td>"
+                
+        # Nieuwe bestellingen
+        if len(self.nieuweBestellingen) != 0:
+            self.html_string += "<td>"
+            for bestelling in self.nieuweBestellingen:
+                if self.nieuweBestellingen[len(self.nieuweBestellingen)-1] != bestelling:
+                    self.html_string += str(bestelling.getKey()) + ", "
+                else:
+                    self.html_string += str(bestelling.getKey())
+            self.html_string += "</td>" + newline
+        else:
+            self.html_string += "<td></td>" + newline
 
         # Wachtende bestellingen
-        self.html_string += "<td>"
-        for bestelling in self.bestellingen.traverse():
-            if self.bestellingen.traverse()[len(self.bestellingen.traverse())-1] != bestelling:
-                self.html_string += str(bestelling.getKey()) + ", "
-            else:
-                self.html_string += str(bestelling.getKey())
-        self.html_string += "</td>" + newline
+        if len(self.bestellingen.traverse()) != 0:
+            self.html_string += "<td>"
+            for bestelling in self.bestellingen.traverse():
+                if self.bestellingen.traverse()[len(self.bestellingen.traverse())-1] != bestelling:
+                    self.html_string += str(bestelling.getKey()) + ", "
+                else:
+                    self.html_string += str(bestelling.getKey())
+            self.html_string += "</td>" + newline
+        else:
+            self.html_string += "<td></td>" + newline
+
         # Wit
         self.html_string += "<td>" + str(self.stock.count("shot", "wit")) + "</td>" + newline
         # Melk
@@ -107,13 +113,13 @@ class System:
         """
         output = ""
         output += "<html>"
+        output += "<style> table, td, th, tr {border-collapse: collapse; border: 1px solid black; empty-cells: show} </style>"
         output += "<body>"
-        output += "<style> table {border-collapse: collapse;} \n table, td, th {border: 1px solid black; empty-cells:show;} </style>"
         output += "<table>"
         output += self.html_string
         output += "</table>"
         output += "</body>"
-        output += "</html"
+        output += "</html>"
         with open(str(f"Log{self.html_count}.html"), "w+") as f:
             f.write(output)
         self.html_count += 1
