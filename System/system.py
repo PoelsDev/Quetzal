@@ -62,7 +62,7 @@ class System:
         # Workorders
         for werknemer in lst2:
             if werknemer.currentOrder != None:
-                self.html_string += "<td>" + str(werknemer.currentOrder.getKey()) + "</td>" + newline
+                self.html_string += "<td>" + str(werknemer.load) + "</td>" + newline
             else:
                 self.html_string += "<td></td>" + newline
                 
