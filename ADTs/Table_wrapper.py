@@ -57,7 +57,7 @@ class Table:
         elif self.type == "heap":
             self.data.insert(key, content)
         elif self.type == "queue":
-            self.data.enqueue(content, key)
+            self.data.enqueue(content)
         elif self.type == "dlc":
             self.data.insert(content, key)
         elif self.type == "binTree":

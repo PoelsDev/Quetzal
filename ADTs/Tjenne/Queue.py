@@ -1,10 +1,9 @@
 import os
 
 class Node:
-    def __init__(self, content, key):
+    def __init__(self, content):
         self.next = None
         self.content = content
-        self.key = key
 
 
 class Queue:
@@ -23,15 +22,15 @@ class Queue:
             return True
         return False
 
-    def enqueue(self, content, key):
+    def enqueue(self, content):
         """
         voegt item toe aan queue
         :param content: toe te voegen waarde
         :return: True als toegevoegd
-        pre: key is een integer, node met key en content is achteraan toegevoegd aan de queue
+        pre: key is een integer, node met content is achteraan toegevoegd aan de queue
         """
         if self.head is None:
-            self.head = Node(content, key)
+            self.head = Node(content)
             self.size += 1
             return True
 
@@ -40,7 +39,7 @@ class Queue:
         while current.next is not None:
             current = current.next
 
-        current.next = Node(content, key)
+        current.next = Node(content)
         self.size += 1
         return True
 
@@ -56,7 +55,6 @@ class Queue:
         ret_val = self.head.content
         self.head = self.head.next
         del to_pop.content
-        del to_pop.key
         del to_pop
         self.size -= 1
         return ret_val
@@ -64,12 +62,12 @@ class Queue:
 
     def front(self):
         """
-        print de waarde van het eerste item in de queue
-        :return: None
+        returned de waarde van het eerste item in de queue
+        :return: de self.head waarde
         pre: queue moet bestaan
         post: /
         """
-        print(self.head.key)
+        return self.head
 
 
     def traverse(self):
