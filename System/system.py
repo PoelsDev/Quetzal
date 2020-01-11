@@ -264,7 +264,7 @@ class System:
                 elif i >= wordCount - 5:
                     date += command[i]
 
-            order = Bestelling(user, date, ingredients)
+            order = Bestelling(user, date, ingredients, self.stock)
             self.bestellingen.insert(order, self.__stringToIntVal(order.ID))
             self.nieuweBestellingen.append(order)
             return 1

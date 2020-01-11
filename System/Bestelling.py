@@ -1,5 +1,5 @@
 class Bestelling:
-    def __init__(self, gebruikersid, timestamp, ingredienten):
+    def __init__(self, gebruikersid, timestamp, ingredienten, stock):
         self.credits = 5 + len(ingredienten)
         self.gebruikersid = gebruikersid
         self.timestamp = timestamp
@@ -8,14 +8,27 @@ class Bestelling:
         self.ingredients = ingredienten
         self.prijs = 2
         for ingredient in ingredienten:
-            if ingredient == "melk" or ingredient == "zwart" or ingredient == "wit" or ingredient == "bruin":
+            if ingredient == "melk":
                 self.prijs += 1
+                stock.melk.delete()
+            elif ingredient == "zwart":
+                self.prijs += 1
+                stock.zwart.delete()
+            elif ingredient == "wit":
+                self.prijs += 1
+                stock.wit.delete()
+            elif ingredient == "bruin":
+                self.prijs += 1
+                stock.bruin.delete()
             elif ingredient == "honing":
                 self.prijs += 0.5
+                stock.honing.delete()
             elif ingredient == "chili":
                 self.prijs += 0.25
+                stock.chili.delete()
             elif ingredient == "marshmallow":
                 self.prijs += 0.75
+                stock.marshmallow.delete()
 
 
 
