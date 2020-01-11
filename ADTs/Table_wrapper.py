@@ -1,5 +1,5 @@
 from ADTs.BinarySearchTree import BinarySearchTree
-from ADTs.Tjenne.Queuez import Queue
+from ADTs.Tjenne.Queue import Queue
 from ADTs.Thibault.Stack import Stack
 from ADTs.Thibault.TwoThreeFourTree import TwoThreeFourTree
 from ADTs.Tjenne.heap import Heap
