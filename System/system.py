@@ -312,11 +312,13 @@ class System:
         # update de html string
         self.updateHTML()
 
+        amountFreed = 0
         for w in range(len(self.actieve_Werknemers)):
-            werker = self.actieve_Werknemers[w]
+            werker = self.actieve_Werknemers[w-amountFreed]
             if werker.workOrder():
                 self.vrije_Werknemers.insert(werker, werker.id)
-                self.actieve_Werknemers.pop(w)
+                self.actieve_Werknemers.pop(w-amountFreed)
+                amountFreed += 1
 
         while not self.bestellingen.isEmpty() and not self.vrije_Werknemers.isEmpty():
             werker = self.vrije_Werknemers.delete()[0]
@@ -378,10 +380,12 @@ class System:
             self.__commandHandler(line)
 
         # het verder afwerken eens dat alle commands gebeurt zijn
-        while not self.bestellingen.isEmpty() and len(self.actieve_Werknemers) == 0:
+        while not (len(self.actieve_Werknemers) == 0 and  self.bestellingen.isEmpty()) :
             self.update()
             self.time += 1
+        self.updateHTML()
         self.generateHTML()
+
 
 
 
