@@ -289,7 +289,7 @@ class System:
 
                 return 1
 
-        elif command[1] == "log":
+        elif command[1] == "log" or command[1] == "log\n":
             self.generateHTML()
             print("Log generated")
             return 1
@@ -304,6 +304,10 @@ class System:
         wordt elke nieuwe time unit opgeroepen. Updated de progress
         :return:
         """
+
+        # update de html string
+        self.updateHTML()
+
         for w in range(len(self.actieve_Werknemers)):
             werker = self.actieve_Werknemers[w]
             if werker.workOrder():
@@ -378,7 +382,7 @@ class System:
 
 s = System()
 
-s.systemRun("inputFiles/testFile")
+s.systemRun("inputFiles/system.txt")
 
 
 
