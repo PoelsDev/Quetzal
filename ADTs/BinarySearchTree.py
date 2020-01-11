@@ -227,12 +227,14 @@ class BinarySearchTree:
         Goes trough binary tree in inorder and for each node it will print out the searchkey
         :return: prints out searchKey of node
         """
+        content = []
         if not self.isEmpty():
             if self.leftTree != None:
                 self.leftTree.inorderTraverse()
-            print(self.root.searchKey.getKey())
+            content.append(self.root.searchKey.getKey())
             if self.rightTree != None:
                 self.rightTree.inorderTraverse()
+            return content
 
     def toDot(self, filename):
         open(filename, "w+")
