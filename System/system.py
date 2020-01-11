@@ -18,15 +18,33 @@ class System:
         self.actieve_Werknemers = []
         self.nieuweBestellingen = []
 
+        # HTML Member Variables #
+        self.html_string = ""
+        self.html_count = 0
+        #############
 
         self.time = 0
 
         self.lastSave = None        # last system save, voor eventuele undo
 
+    def updateHTML(self):
+        """
+        +updateHTML() update de html string op basis van de voorbije gebeurtenissen (dit elke nieuwe tijdseenheid)
+        """
+        self.html_string = ""
+
+
     def generateHTML(self):
         """
         Dit maakt een html-file aan voor de gegevens.
         """
+        output = ""
+        newline = "\n"
+        with open(str(f"Log{self.html_count}.html"), "w+") as f:
+            output += "<html>"
+            output += "<body>"
+            #TODO: table head + finish
+        self.html_count += 1
 
 
     def __stringToIntVal(self, s):
