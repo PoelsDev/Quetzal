@@ -79,11 +79,12 @@ class Queue:
         """
         current = self.head
         allContent = []
-        while current.next is not None:
+        if self.head is not None:
+            while current.next is not None:
+                allContent.append(current.content)
+                current = current.next
             allContent.append(current.content)
-            current = current.next
-        allContent.append(current.content)
-        return allContent
+            return allContent
 
 
     def destroy(self):
