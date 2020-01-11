@@ -64,7 +64,6 @@ class Table:
             self.data.searchTreeInsert(content)
         elif self.type == "23":
             self.data.insertItem(content)
-            self.data.insert(key, content)
         elif self.type == "h_lin" or self.type == "h_quad" or self.type == "h_sep":
             self.data.insert(content, key)
         elif self.type == "234":
@@ -144,8 +143,7 @@ class Table:
         post: None
         """
         if self.type == "stack":
-            self.data.traverse()
-            return
+            return self.data.traverse()
         elif self.type == "heap":
             # nog niet geïmplementeerd
             return
@@ -153,12 +151,11 @@ class Table:
             self.data.traverse()
             return
         elif self.type == "dlc":
-            self.data.traverse()
-            return
+            return self.data.traverse()
         elif self.type == "binTree":
             self.data.inorderTraverse()
         elif self.type == "23":
-            self.data.traverse()
+            return self.data.traverse()
         elif self.type == "234":
             return self.data.inorder()
 
