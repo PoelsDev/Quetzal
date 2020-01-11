@@ -20,17 +20,25 @@ class Stock:
         type: type ingrediënt (shot, topping)
         subtype: welk soort shot of topping
         """
+
+        count = 0
+
         if type == "shot":
-            #self.shots.traverse(subtype)
+            allShots = self.shots.traverse()
+            for shot in allShots:
+                if shot.soort == subtype:
+                    count += 1
             return
 
         elif type == "topping":
-            # self.toppings.traverse(subtype)
+            allToppings = self.toppings.traverse()
+            for topping in allToppings:
+                if topping.type == subtype:
+                    count += 1
             return
 
-        else:
-            # traverse, return vector met maps voor elk soort topping
-            return
+        print("Unkknown type")
+        return
 
 
     def addToStock(self, itemType, itemSubType, itemDate, count):

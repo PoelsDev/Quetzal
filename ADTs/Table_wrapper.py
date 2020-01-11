@@ -1,11 +1,16 @@
 from ADTs.BinarySearchTree import BinarySearchTree
 from ADTs.Tjenne.Queuez import Queue
 from ADTs.Thibault.Stack import Stack
+from ADTs.Thibault.TwoThreeFourTree import TwoThreeFourTree
 from ADTs.Tjenne.heap import Heap
 from ADTs.Tjenne.hashmap import Hashmap
 from ADTs.Mounir.DLC import DLC
+<<<<<<< HEAD
 from ADTs.Mounir.TwoThreeTree import Tree
 "234 tree"
+=======
+
+>>>>>>> 26beba62e5eba600f3d039408a694c12aec270c5
 
 class Table:
 
@@ -37,6 +42,8 @@ class Table:
             self.data = Hashmap(51, "quad")
         elif type == "h_sep":
             self.data = Hashmap(51, "sep")
+        elif type == "234":
+            self.data = TwoThreeFourTree()
         else:
             print("Unknown type: " + type)
 
@@ -57,11 +64,17 @@ class Table:
         elif self.type == "dlc":
             self.data.insert(content, key)
         elif self.type == "binTree":
+<<<<<<< HEAD
             self.data.searchTreeInsert(content)
         elif self.type == "23":
             self.data.insertItem(content)
+=======
+            self.data.insert(key, content)
+>>>>>>> 26beba62e5eba600f3d039408a694c12aec270c5
         elif self.type == "h_lin" or self.type == "h_quad" or self.type == "h_sep":
             self.data.insert(content, key)
+        elif self.type == "234":
+            self.data.insertItem(content)
 
     def delete(self, key=None):
         """
@@ -79,7 +92,11 @@ class Table:
             self.data.delete(key)
         elif self.type == "binTree":
             self.data.delete(key)
+<<<<<<< HEAD
         elif self.type == "23":
+=======
+        elif self.type == "234":
+>>>>>>> 26beba62e5eba600f3d039408a694c12aec270c5
             self.data.deleteItem(key)
 
     def print(self):
@@ -121,8 +138,13 @@ class Table:
             self.data.retrieve(key)
         elif self.type == "binTree":
             self.data.find(key)
+<<<<<<< HEAD
         elif self.type == "23":
             self.data.retrieveItem(key)
+=======
+        elif self.type == "234":
+            return self.data.retrieveItem(key)
+>>>>>>> 26beba62e5eba600f3d039408a694c12aec270c5
 
 
     def traverse(self):
@@ -146,8 +168,13 @@ class Table:
             return
         elif self.type == "binTree":
             self.data.inorderTraverse()
+<<<<<<< HEAD
         elif self.type == "23":
             self.data.traverse()
+=======
+        elif self.type == "234":
+            return self.data.inorder()
+>>>>>>> 26beba62e5eba600f3d039408a694c12aec270c5
 
 
 
