@@ -83,9 +83,9 @@ class System:
             self.html_string += "<td>"
             for bestelling in self.bestellingen.traverse():
                 if self.bestellingen.traverse()[len(self.bestellingen.traverse())-1] != bestelling:
-                    self.html_string += str(bestelling.getKey()) + ", "
+                    self.html_string += str(bestelling.credits) + ", "
                 else:
-                    self.html_string += str(bestelling.getKey())
+                    self.html_string += str(bestelling.credits)
             self.html_string += "</td>" + newline
         else:
             self.html_string += "<td></td>" + newline
