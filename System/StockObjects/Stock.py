@@ -22,6 +22,9 @@ class Stock:
         type: type ingrediënt (shot, honing, chili, marshmallow)
         subtype: welk soort shot
         """
+
+        count = 0
+
         if type == "shot":
             if subtype == "wit":
                 count = len(self.wit.traverse())

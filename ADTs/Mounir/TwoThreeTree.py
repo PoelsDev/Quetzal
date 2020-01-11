@@ -1014,10 +1014,10 @@ class Test:
     def getKey(self):
         return self.key
 
-b = Tree()
-b.insertItem(12)
-b.insertItem(14)
-b.insertItem(11)
-
-b.printTree()
-print(b.traverse())
+# b = Tree()
+# b.insertItem(12)
+# b.insertItem(14)
+# b.insertItem(11)
+#
+# b.printTree()
+# print(b.traverse())
