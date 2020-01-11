@@ -307,19 +307,28 @@ class Hashmap:
         """
 
         allContent = []
-        if self.type != "h_sep":
+        if self.type != "sep":
             for i in range(len(self.map)):
                 if self.map[i] is not None:
                     allContent.append(self.map[i].content)
 
+        else:
+            for i in range(len(self.map)):
+                if self.map[i] is not None:
+                    for item in self.map[i].traverse():
+                        allContent.append(item)
+            return allContent
 
 
 
-# h = Hashmap(11, "lin")
+
+# h = Hashmap(11, "sep")
 # h.insert(2, 11)
 # h.insert(13, 22)
 # h.insert(35, 33)
-# h.print()
+# h.insert(3, 3)
+#
+# all = h.traverse()
 #
 # h.print()
 # print("fin")
