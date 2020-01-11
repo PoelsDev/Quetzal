@@ -310,7 +310,7 @@ class Hashmap:
         if self.type != "h_sep":
             for i in range(len(self.map)):
                 if self.map[i] is not None:
-                    allContent.append(self.map[i].conent)
+                    allContent.append(self.map[i].content)
 
 
 
