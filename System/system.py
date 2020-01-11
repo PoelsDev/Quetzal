@@ -278,7 +278,7 @@ class System:
                 for i in range(5, wordCount):
                     date += command[i]
 
-                self.stock.addToStock("stock", subType, date, amount)
+                self.stock.addToStock("shot", subType, date, amount)
 
                 return 1
             elif command[2] == "honing" or command[2] == "chili" or command[2] == "marshmallow":
@@ -393,6 +393,9 @@ class System:
         while not (len(self.actieve_Werknemers) == 0 and self.bestellingen.isEmpty()):
             self.update(True)
             self.time += 1
+
+        self.updateHTML()
+        self.generateHTML()
 
 
 
