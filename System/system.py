@@ -21,7 +21,6 @@ class System:
         # HTML Member Variables #
         self.html_string = ""
         self.html_count = 0
-        #############
 
         self.time = 0
 
@@ -330,7 +329,6 @@ class System:
             # maakt de lijst met nieuwe bestellingen leeg
             while not len(self.nieuweBestellingen) == 0:
                 self.nieuweBestellingen.pop()
-
 
 
         while not self.bestellingen.isEmpty() and not self.vrije_Werknemers.isEmpty():
