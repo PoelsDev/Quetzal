@@ -55,17 +55,17 @@ class Table:
         if self.type == "stack":
             self.data.push(content)
         elif self.type == "heap":
-            self.data.insert(key, content)
+            self.data.insert(content.getKey(), content)
         elif self.type == "queue":
             self.data.enqueue(content)
         elif self.type == "dlc":
-            self.data.insert(content, key)
+            self.data.insert(content)
         elif self.type == "binTree":
             self.data.searchTreeInsert(content)
         elif self.type == "23":
             self.data.insertItem(content)
         elif self.type == "h_lin" or self.type == "h_quad" or self.type == "h_sep":
-            self.data.insert(content, key)
+            self.data.insert(content, content.getKey())
         elif self.type == "234":
             self.data.insertItem(content)
 
@@ -89,6 +89,8 @@ class Table:
             self.data.deleteItem(key)
         elif self.type == "234":
             self.data.deleteItem(key)
+        elif self.type == "h_lin" or self.type == "h_sep" or self.type == "h_quad":
+            self.data.delete(key)
 
     def print(self):
         """

@@ -8,13 +8,13 @@ from ADTs.Table_wrapper import *
 
 class Stock:
     def __init__(self):
-        self.wit = Table("stack")           # adt hier aanpassen
-        self.zwart = Table("stack")
-        self.melk = Table("stack")
-        self.bruin = Table("stack")
-        self.honing = Table("stack")
-        self.chili = Table("stack")
-        self.marshmallow = Table("stack")
+        self.wit = Table("h_sep")           # adt hier aanpassen
+        self.zwart = Table("h_sep")
+        self.melk = Table("h_sep")
+        self.bruin = Table("h_sep")
+        self.honing = Table("h_sep")
+        self.chili = Table("h_sep")
+        self.marshmallow = Table("h_sep")
         self.cwit = 0
         self.czwart = 0
         self.cmelk = 0
@@ -58,23 +58,23 @@ class Stock:
         if itemType == "shot":
             while count > 0:
                 if itemSubType == "wit":
-                    searchkey = itemDate + str(self.cwit)
+                    searchkey = int(itemDate + str(self.cwit))
                     shot = Cshot(itemSubType, itemDate, searchkey)
                     self.wit.insert(shot)
                     self.cwit += 1
                 elif itemSubType == "zwart":
-                    searchkey = itemDate + str(self.czwart)
+                    searchkey = int(itemDate + str(self.czwart))
                     shot = Cshot(itemSubType, itemDate, searchkey)
                     self.zwart.insert(shot)
                     self.czwart += 1
                 elif itemSubType == "bruin":
-                    searchkey = itemDate + str(self.cbruin)
+                    searchkey = int(itemDate + str(self.cbruin))
                     shot = Cshot(itemSubType, itemDate, searchkey)
                     self.bruin.insert(shot)
                     self.cbruin += 1
 
                 elif itemSubType == "melk":
-                    searchkey = itemDate + str(self.cmelk)
+                    searchkey = int(str(int(itemDate)) + str(self.cmelk))
                     shot = Cshot(itemSubType, itemDate, searchkey)
                     self.melk.insert(shot)
                     self.cmelk += 1

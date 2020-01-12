@@ -4,10 +4,12 @@ class Gebruiker:
         self.achternaam = achternaam
         self.email = email
         self.ID = ID
+        self.searchkey = ID
 
 
+    def getKey(self):
         """
-        Er moet ook een ID zijn, maar er staat in het voorbeeld input bestand zelf geen ID 
-        
-        #tommeketommeketommekewadoedenu
+        Returned de searchkey
+        :return: searchkey
         """
+        return self.searchkey

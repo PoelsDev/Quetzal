@@ -23,6 +23,7 @@ class Hashmap:
         self.size = mapsize
         self.type = type
         self.itemCount = 0
+        self.allKeys = []
         self.map = []
         for i in range(mapsize):
             self.map.append(None)
@@ -46,7 +47,10 @@ class Hashmap:
         pre: de hashmap moet bestaan, key is een integer
         post: returnwaarde is een integer
         """
+        self.allKeys.append(key)
         return int(key) % self.size
+
+
 
     def insert(self, content, key):
         """
@@ -57,7 +61,7 @@ class Hashmap:
         pre: hashmap moet bestaan, key is een integer
         post: itemcount is met één vergroot, node met key en item toegevoegd aan map
         """
-        hashkey = self.hashkey(key)
+        hashkey = self.hashkey(int(key))
         originalItemCount = self.itemCount
         if self.type == "lin":
             self.__lininsert(content, key, hashkey)
@@ -99,7 +103,7 @@ class Hashmap:
         current = self.map[hashkey + 1]
         while current is not None:
             nextposcount += 1
-            if nextposcount >= self.size:
+            while nextposcount + hashkey >= self.size:
                 nextposcount -= self.size
             current = self.map[hashkey + nextposcount]
 
@@ -166,6 +170,10 @@ class Hashmap:
         post: itemcount is met één gedaald, item dat bij key hoort is verwijdert
 
         """
+
+        key = self.allKeys[0]   # voor implementatie stock
+        self.allKeys.pop(0)
+
         hashkey = self.hashkey(key)
         originalItemCount = self.itemCount
 

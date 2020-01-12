@@ -395,14 +395,6 @@ class System:
             self.update(True)
             self.time += 1
 
-        self.updateHTML()
-        self.generateHTML()
-
-
-
-
-
-
 s = System()
 
 s.systemRun("inputFiles/system.txt")
