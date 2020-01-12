@@ -11,6 +11,7 @@ class Bestelling:
         self.ingredients = ingredienten
         self.prijs = 2
         self.enoughstock = True
+        # Checks if there is enough in stock of the ingredients that is needed for the order (bestelling)
         for ingredient in ingredienten:
             if ingredient == "honing" or ingredient == "marshmallow" or ingredient == "chili":
                 if len(stock.ingredient[ingredient].traverse()) < ingredienten.count(ingredient):
@@ -18,6 +19,7 @@ class Bestelling:
             elif ingredient == "wit" or ingredient == "zwart" or ingredient == "bruin" or ingredient == "melk":
                 if len(stock.shot[ingredient].traverse()) < ingredienten.count(ingredient):
                     self.enoughstock = False
+        # If there is indeed enough in stock to process the order the stock will be updated and the price as well
         if self.enoughstock:
             for ingredient in ingredienten:
                 if ingredient == "melk":
