@@ -2,8 +2,7 @@
 ## GAS Groepsgedeelte TO: Tjenne, Mounir, Jasper, Thibault
 
 ### TODO:
-1. ADT switch testen
-2. Stock delete (key) fix
+1. Commentaar
 
 ### DONE:
 1. Geavanceerde ADTs
@@ -22,3 +21,4 @@
     * Chilipepper
     * Gebruiker
 4. System
+5. Testing
