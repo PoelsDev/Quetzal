@@ -84,6 +84,8 @@ class Table:
         elif self.type == "dlc":
             self.data.delete(key)
         elif self.type == "binTree":
+            if key == None:
+                key = self.data.inorderTraverse()[0].getKey()
             self.data.searchTreeDelete(key)
         elif self.type == "23":
             self.data.deleteItem(key)
