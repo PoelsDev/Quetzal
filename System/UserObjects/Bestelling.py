@@ -8,9 +8,9 @@ class Bestelling:
         self.timestamp = timestamp
         self.ID = gebruikersid + str(self.credits)
         self.afgehaald = False
-        self.ingredients = ingredienten
-        self.prijs = 2
-        self.enoughstock = True
+        self.ingredients = ingredienten  # vector of which and how much ingredients that is needed to make the order
+        self.prijs = 2  # standard price of an order
+        self.enoughstock = True  # true when there is enough of the ingredients in stock to process the order (bestelling)
         # Checks if there is enough in stock of the ingredients that is needed for the order (bestelling)
         for ingredient in ingredienten:
             if ingredient == "honing" or ingredient == "marshmallow" or ingredient == "chili":
@@ -24,7 +24,7 @@ class Bestelling:
             for ingredient in ingredienten:
                 if ingredient == "melk":
                     self.prijs += 1
-                    stock.melk.delete()
+                    stock.melk.delete() # deletes one instant of the ingredient from the stock
                 elif ingredient == "zwart":
                     self.prijs += 1
                     stock.zwart.delete()
