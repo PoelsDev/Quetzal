@@ -43,11 +43,11 @@ class Stack:
         Post-condities: Het bovenste item van de stack is er af gehaald en wordt teruggegeven.
         """
         if self.isEmpty():
-            return None, False
+            return None
         else:
             temp = self.listHead
             self.listHead = temp.next
-            return temp.value, True
+            return temp.value
 
     def top(self):
         """

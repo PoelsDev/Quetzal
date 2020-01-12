@@ -298,6 +298,7 @@ class System:
                 return 1
 
         elif command[1] == "log" or command[1] == "log\n":
+            self.updateHTML()
             self.generateHTML()
             print("Log generated")
             return 1
@@ -333,7 +334,7 @@ class System:
 
 
         while not self.bestellingen.isEmpty() and not self.vrije_Werknemers.isEmpty():
-            werker = self.vrije_Werknemers.delete()[0]
+            werker = self.vrije_Werknemers.delete()
             bestelling = self.bestellingen.delete()
             werker.giveOrder(bestelling)
             self.actieve_Werknemers.append(werker)
