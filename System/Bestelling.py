@@ -10,10 +10,10 @@ class Bestelling:
         self.enoughstock = True
         for ingredient in ingredienten:
             if ingredient == "honing" or ingredient == "marshmallow" or ingredient == "chili":
-                if stock.ingredient[ingredient].isEmpty():
+                if len(stock.ingredient[ingredient].traverse()) < ingredienten.count(ingredient):
                     self.enoughstock = False
             elif ingredient == "wit" or ingredient == "zwart" or ingredient == "bruin" or ingredient == "melk":
-                if stock.shot[ingredient].isEmpty():
+                if len(stock.shot[ingredient].traverse()) < ingredienten.count(ingredient):
                     self.enoughstock = False
         if self.enoughstock:
             for ingredient in ingredienten:
