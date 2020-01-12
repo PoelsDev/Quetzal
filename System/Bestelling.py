@@ -1,3 +1,6 @@
+from System.hulpFunctie import *
+
+
 class Bestelling:
     def __init__(self, gebruikersid, timestamp, ingredienten, stock):
         self.credits = 5 + len(ingredienten)

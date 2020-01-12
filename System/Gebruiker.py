@@ -1,3 +1,5 @@
+from System.hulpFunctie import *
+
 class Gebruiker:
     def __init__(self, ID, voornaam, achternaam, email):
         self.voornaam = voornaam
@@ -12,4 +14,6 @@ class Gebruiker:
         Returned de searchkey
         :return: searchkey
         """
+        if type(self.searchkey) is str:
+            return stringToIntVal(self.searchkey)
         return self.searchkey

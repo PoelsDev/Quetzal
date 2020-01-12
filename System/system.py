@@ -124,24 +124,6 @@ class System:
             f.write(output)
         self.html_count += 1
 
-
-    def __stringToIntVal(self, s):
-        """
-        +__stringToIntval(in s:string, out: int)
-        zet elke char in een string om naar zijn intval en plakt deze aan elkaar om zo een key te bekomen
-        :param s: string
-        :return: integer
-        """
-        intValString = ""
-
-        for char in s:
-            intval = ord(char)
-
-            intValString += str(intval)
-
-        return int(intValString)
-
-
     def __parseInitStock(self, line):
         itemType = None
         itemSubType = None
@@ -191,11 +173,11 @@ class System:
             elif i == wordCount - 1:
                 email = command[i]
 
-        id = self.__stringToIntVal(voornaam+achternaam)
+        id = stringToIntVal(voornaam+achternaam)
         gebruiker = Gebruiker(id, voornaam, achternaam, email)
 
 
-        key = self.__stringToIntVal(email)
+        key = stringToIntVal(email)
         self.gebruikers.insert(gebruiker, int(key))
 
 
@@ -216,7 +198,7 @@ class System:
             elif i == wordCount - 1:
                 workload = int(command[i])
 
-        id = self.__stringToIntVal(voornaam+achternaam)
+        id = stringToIntVal(voornaam+achternaam)
         werknemer = Werknemer(id, voornaam, achternaam, workload)
 
         self.werkNemers.insert(werknemer, id)
@@ -267,7 +249,7 @@ class System:
 
             order = Bestelling(user, date, ingredients, self.stock)
             if order.enoughstock:
-                self.bestellingen.insert(order, self.__stringToIntVal(order.ID))
+                self.bestellingen.insert(order, stringToIntVal(order.ID))
                 self.nieuweBestellingen.append(order)
             else:
                 print("Not enough stock")

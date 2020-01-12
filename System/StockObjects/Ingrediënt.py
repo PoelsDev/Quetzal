@@ -1,3 +1,6 @@
+from System.hulpFunctie import *
+
+
 class Ingredient:
     def __init__(self, type, vervaldatum, searchkey):
         self.vervaldatum = int(vervaldatum)
@@ -11,4 +14,6 @@ class Ingredient:
             self.prijs = 0.75
 
     def getKey(self):
+        if type(self.searchkey) is str:
+            return stringToIntVal(self.searchkey)
         return self.searchkey
