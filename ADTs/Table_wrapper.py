@@ -85,7 +85,7 @@ class Table:
             self.data.delete(key)
         elif self.type == "binTree":
             if key == None:
-                key = self.data.inorderTraverse()[0].getKey()
+                key = self.data.inorderTraverse()[0]
             self.data.searchTreeDelete(key)
         elif self.type == "23":
             self.data.deleteItem(key)
