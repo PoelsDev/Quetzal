@@ -1,5 +1,4 @@
 
-
 from System.StockObjects.Ingrediënt import Ingredient
 from System.StockObjects.Chocolade_Shot import Cshot
 
@@ -49,7 +48,7 @@ class Stock:
     def addToStock(self, itemType, itemSubType, itemDate, count):
         if itemType == "shot":
             while count > 0:
-                searchkey = int(itemDate + str(self.cshot[itemSubType]))
+                searchkey = int(str(int(itemDate)) + str(self.cshot[itemSubType]))
                 shot = Cshot(itemSubType, itemDate, searchkey)
                 self.shot[itemSubType].insert(shot)
                 self.cshot[itemSubType] += 1
@@ -57,7 +56,7 @@ class Stock:
 
         else:
             while count > 0:
-                searchkey = int(itemDate + str(self.cingredient[itemType]))
+                searchkey = int(str(int(itemDate)) + str(self.cingredient[itemType]))
                 item = Ingredient(itemType, itemDate, searchkey)
                 self.ingredient[itemType].insert(item)
                 self.cingredient[itemType] += 1

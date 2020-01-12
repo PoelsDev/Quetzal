@@ -29,6 +29,15 @@ start
 
 # voeg 4 keer melkchocolade toe aan de stock
 3 stock shot melk 4 2018 5 1
+3 stock shot bruin 4 2018 5 1
+3 stock marshmallow 4 2018 5 1
+3 stock shot zwart 4 2018 5 1
+3 stock chili 4 2018 5 1
+3 stock shot wit 4 2018 5 1
+3 stock honing 4 2018 5 1
+
+
+
 
 # dit maakt een bestand log4.html
 4 log
