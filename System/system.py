@@ -108,7 +108,7 @@ class System:
 
     def generateHTML(self):
         """
-        Dit maakt een html-file aan voor de gegevens.
+        +generateHTML() maakt een html-file aan voor de gegevens
         """
         newline = "\n"
         output = ""
@@ -127,9 +127,10 @@ class System:
 
     def __stringToIntVal(self, s):
         """
+        +__stringToIntval(in s:string, out: int)
         zet elke char in een string om naar zijn intval en plakt deze aan elkaar om zo een key te bekomen
-        :param s:
-        :return:
+        :param s: string
+        :return: integer
         """
         intValString = ""
 
