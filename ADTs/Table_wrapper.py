@@ -88,6 +88,8 @@ class Table:
         elif self.type == "23":
             self.data.deleteItem(key)
         elif self.type == "234":
+            if key == None:
+                key = self.data.inorder()[0].getKey()
             self.data.deleteItem(key)
         elif self.type == "h_lin" or self.type == "h_sep" or self.type == "h_quad":
             self.data.delete(key)
