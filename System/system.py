@@ -111,15 +111,16 @@ class System:
         """
         Dit maakt een html-file aan voor de gegevens.
         """
+        newline = "\n"
         output = ""
-        output += "<html>"
-        output += "<style> table, td, th, tr {border-collapse: collapse; border: 1px solid black; empty-cells: show} </style>"
-        output += "<body>"
-        output += "<table>"
+        output += "<html>" + newline
+        output += "<style> table, td, th, tr {border-collapse: collapse; border: 1px solid black; empty-cells: show} </style>" + newline
+        output += "<body>" + newline
+        output += "<table>" + newline
         output += self.html_string
-        output += "</table>"
-        output += "</body>"
-        output += "</html>"
+        output += "</table>" + newline
+        output += "</body>" + newline
+        output += "</html>" + newline
         with open(str(f"Log{self.time}.html"), "w+") as f:
             f.write(output)
         self.html_count += 1
