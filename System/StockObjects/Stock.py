@@ -28,10 +28,12 @@ class Stock:
 
     def count(self, type, subtype=None):
         """
+        +count(in type: type ingrediënt string, in subtype: shot type string, out: count integer)
         Bepaalt het aantal aanwezige items in de stock
 
-        type: type ingrediënt (shot, honing, chili, marshmallow)
-        subtype: welk soort shot
+        :param type: type ingrediënt (shot, honing, chili, marshmallow)
+        :param subtype: welk soort shot
+        :return: count, amount of remaining items of a particular type in the stock
         """
         count = 0
         if type == "shot":
@@ -46,6 +48,19 @@ class Stock:
 
 
     def addToStock(self, itemType, itemSubType, itemDate, count):
+        """
+        +addToStock(in itemType: item type string, in ItemSubType: item subtype string, in itemDate: date string,
+        in count: amount of the item integer)
+
+        adds an amount of items to the stock
+
+        :param itemType: type of the item added to the stock
+        :param itemSubType: potential subtype of the item added to the stock
+        :param itemDate: expiration date of the item added to the stock
+        :param count: the amount of the item added to the stock
+        :return: None
+        """
+
         if itemType == "shot":
             while count > 0:
                 searchkey = int(str(int(itemDate)) + str(self.cshot[itemSubType]))

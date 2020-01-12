@@ -126,6 +126,11 @@ class System:
         self.html_count += 1
 
     def __parseInitStock(self, line):
+        """
+        +__parseInitStock(in line: command line)
+        parses command and adds items to the stock
+        :param line: command line
+        """
         itemType = None
         itemSubType = None
         itemCount = 0
@@ -157,6 +162,11 @@ class System:
         self.stock.addToStock(itemType, itemSubType, itemDate, itemCount)
 
     def __parseInitUser(self, line):
+        """
+        +__parseInitUser(in line: command line)
+        parses command and adds user (gebruiker)
+        :param line: command line
+        """
         voornaam = ""
         achternaam = ""
         email = ""
@@ -184,6 +194,11 @@ class System:
 
 
     def __parseInitEmployee(self, line):
+        """
+        +__parseInitEmployee(in line: command line)
+        parses command and adds employee (werknemer)
+        :param line: command line
+        """
         voornaam = ""
         achternaam = ""
         workload = 0
@@ -208,6 +223,7 @@ class System:
 
     def __splitCommand(self, command):
         """
+        +__splitCommand(in command: string, out splittedCommand: vector)
         Splitst een string op in aparte strings in een vector
         :param command: de op te splitsen string
         :return: een vector met het opgesplitste command
@@ -228,11 +244,11 @@ class System:
 
     def __commandHandler(self, line):
         """
+        +__commandHandler(in line: command, out: 0 or 1)
         Behandelt de commands na dat het systeem gestart is (stock, log, bestel)
         :param line: de command die behandelt moet worden
         :return: 0 als ongeldige input, 1 als command correct uitgevoerd is
         """
-
         command = self.__splitCommand(line)
         wordCount = len(command)
 
@@ -294,10 +310,10 @@ class System:
 
     def update(self, updateTime):
         """
+        +update(in updateTime: boolean)
         wordt elke nieuwe time unit opgeroepen. Updated de progress
-        :return:
+        :param updateTime: boolean query
         """
-
         if updateTime:
 
             # update de html string
@@ -329,7 +345,9 @@ class System:
 
     def systemRun(self, inputFile):
         """
+        +systemRun(in inputeFile: input text file)
         parsed een input file, en voert de commands uit
+        :param inputFile: text file
         """
 
         f = open(inputFile, 'r')
