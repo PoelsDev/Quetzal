@@ -7,28 +7,37 @@ class Bestelling:
         self.afgehaald = False
         self.ingredients = ingredienten
         self.prijs = 2
+        self.enoughstock = True
         for ingredient in ingredienten:
-            if ingredient == "melk":
-                self.prijs += 1
-                stock.melk.delete()
-            elif ingredient == "zwart":
-                self.prijs += 1
-                stock.zwart.delete()
-            elif ingredient == "wit":
-                self.prijs += 1
-                stock.wit.delete()
-            elif ingredient == "bruin":
-                self.prijs += 1
-                stock.bruin.delete()
-            elif ingredient == "honing":
-                self.prijs += 0.5
-                stock.honing.delete()
-            elif ingredient == "chili":
-                self.prijs += 0.25
-                stock.chili.delete()
-            elif ingredient == "marshmallow":
-                self.prijs += 0.75
-                stock.marshmallow.delete()
+            if ingredient == "honing" or ingredient == "marshmallow" or ingredient == "chili":
+                if stock.ingredient[ingredient].isEmpty():
+                    self.enoughstock = False
+            elif ingredient == "wit" or ingredient == "zwart" or ingredient == "bruin" or ingredient == "melk":
+                if stock.shot[ingredient].isEmpty():
+                    self.enoughstock = False
+        if self.enoughstock:
+            for ingredient in ingredienten:
+                if ingredient == "melk":
+                    self.prijs += 1
+                    stock.melk.delete()
+                elif ingredient == "zwart":
+                    self.prijs += 1
+                    stock.zwart.delete()
+                elif ingredient == "wit":
+                    self.prijs += 1
+                    stock.wit.delete()
+                elif ingredient == "bruin":
+                    self.prijs += 1
+                    stock.bruin.delete()
+                elif ingredient == "honing":
+                    self.prijs += 0.5
+                    stock.honing.delete()
+                elif ingredient == "chili":
+                    self.prijs += 0.25
+                    stock.chili.delete()
+                elif ingredient == "marshmallow":
+                    self.prijs += 0.75
+                    stock.marshmallow.delete()
 
 
 

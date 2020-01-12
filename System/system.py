@@ -266,8 +266,11 @@ class System:
                     date += command[i]
 
             order = Bestelling(user, date, ingredients, self.stock)
-            self.bestellingen.insert(order, self.__stringToIntVal(order.ID))
-            self.nieuweBestellingen.append(order)
+            if order.enoughstock:
+                self.bestellingen.insert(order, self.__stringToIntVal(order.ID))
+                self.nieuweBestellingen.append(order)
+            else:
+                print("Not enough stock")
             return 1
 
         elif command[1] == "stock":
@@ -279,7 +282,7 @@ class System:
                 for i in range(5, wordCount):
                     date += command[i]
 
-                self.stock.addToStock("shot", subType, date, amount)
+                self.stock.addToStock("shot", subType, date[:-1], amount)
 
                 return 1
             elif command[2] == "honing" or command[2] == "chili" or command[2] == "marshmallow":
