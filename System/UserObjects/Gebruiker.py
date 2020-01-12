@@ -1,4 +1,4 @@
-from System.hulpFunctie import *
+from System.UserObjects.hulpFunctie import *
 
 class Gebruiker:
     def __init__(self, ID, voornaam, achternaam, email):

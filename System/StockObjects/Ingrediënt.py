@@ -1,4 +1,4 @@
-from System.hulpFunctie import *
+from System.UserObjects.hulpFunctie import *
 
 
 class Ingredient:

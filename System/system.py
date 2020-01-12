@@ -1,9 +1,9 @@
 
 from System.StockObjects.Stock import *
 from ADTs.Table_wrapper import *
-from System.Gebruiker import *
-from System.Werknemer import *
-from System.Bestelling import *
+from System.UserObjects.Gebruiker import *
+from System.UserObjects.Werknemer import *
+from System.UserObjects.Bestelling import *
 
 
 class System:
@@ -14,6 +14,7 @@ class System:
 
         self.bestellingen = Table("queue")       # adt hier aanpassen
         self.vrije_Werknemers = Table("stack")
+        self.bestellingendone = Table("234")
 
         self.actieve_Werknemers = []
         self.nieuweBestellingen = []
@@ -249,8 +250,9 @@ class System:
 
             order = Bestelling(user, date, ingredients, self.stock)
             if order.enoughstock:
-                self.bestellingen.insert(order, stringToIntVal(order.ID))
+                self.bestellingen.insert(order, stringToIntVal(order.getKey()))
                 self.nieuweBestellingen.append(order)
+                self.bestellingendone.insert(order, stringToIntVal(order.getKey()))
             else:
                 print("Not enough stock")
             return 1

@@ -1,4 +1,4 @@
-from ADTs.Thibault.Node import Node
+from ADTs.Stack.Node import Node
 
 
 class Stack:

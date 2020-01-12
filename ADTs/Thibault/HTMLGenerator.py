@@ -1,2 +1,0 @@
-def generateHTML(filename):
-    pass

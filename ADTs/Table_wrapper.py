@@ -1,11 +1,11 @@
-from ADTs.BinarySearchTree import BinarySearchTree
-from ADTs.Tjenne.Queue import Queue
-from ADTs.Thibault.Stack import Stack
-from ADTs.Thibault.TwoThreeFourTree import TwoThreeFourTree
-from ADTs.Tjenne.heap import Heap
-from ADTs.Tjenne.hashmap import Hashmap
-from ADTs.Mounir.DLC import DLC
-from ADTs.Mounir.TwoThreeTree import Tree
+from ADTs.BST.BinarySearchTree import BinarySearchTree
+from ADTs.Queue.Queue import Queue
+from ADTs.Stack.Stack import Stack
+from ADTs.TwoThreeFour.TwoThreeFourTree import TwoThreeFourTree
+from ADTs.Heap.heap import Heap
+from ADTs.Hashmap.hashmap import Hashmap
+from ADTs.DLC.DLC import DLC
+from ADTs.TwoThree.TwoThreeTree import Tree
 
 
 
@@ -98,7 +98,7 @@ class Table:
         elif self.type == "h_lin" or self.type == "h_sep" or self.type == "h_quad":
             self.data.delete(key)
 
-    def print(self):
+    def print(self, filename = None):
         """
         maakt een dotfile en png aan van de adt
         :return: None
@@ -107,6 +107,8 @@ class Table:
         """
         if self.type == "dlc" or self.type == "23":
             self.data.createDot()
+        elif filename is not None:
+            self.data.print(filename)
         else:
             self.data.print()
 

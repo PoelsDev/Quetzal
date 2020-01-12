@@ -1,4 +1,4 @@
-from ADTs.Thibault.TwoThreeFourNode import TwoThreeFourNode
+from ADTs.TwoThreeFour.TwoThreeFourNode import TwoThreeFourNode
 from random import randint
 from copy import deepcopy
 
