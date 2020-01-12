@@ -896,29 +896,30 @@ class Node:
             return self
         return self.left.goleft()
 
-    def traverse(self, L):
+    def traverse(self, lijst):
         if len(self.root) == 1:
             if self.left:
-                return self.left.traverse(L)
-            L.append(self.root[0])
+                self.left.traverse(lijst)
+            lijst.append(self.root[0])
             if self.right:
-                return self.right.traverse(L)
+                self.right.traverse(lijst)
         elif len(self.root) == 2:
             if self.left:
-                return self.left.traverse(L)
-            L.append(self.root[0])
+                self.left.traverse(lijst)
+            lijst.append(self.root[0])
             if self.mid:
-                return self.left.traverse(L)
-            L.append(self.root[1])
+                self.mid.traverse(lijst)
+            lijst.append(self.root[1])
             if self.right:
-                return self.mid.traverse(L)
-        return L
+                self.right.traverse(lijst)
+
 
 class Tree:
     def __init__(self):
         self.root = None
         self.dotindex = 1
         self.dotinorderindex = 1
+        self.list = []
 
     def __str__(self):
         print("_____________________________________________________")
@@ -998,11 +999,10 @@ class Tree:
         print("_____________________________________________________")
 
     def traverse(self):
-        L = []
+        self.list = []
         if self.root is not None:
-            return self.root.traverse(L)
-        else:
-            return L
+            self.root.traverse(self.list)
+        return self.list
 
 class Test:
     def __init__(self, key):
@@ -1013,11 +1013,3 @@ class Test:
 
     def getKey(self):
         return self.key
-
-# b = Tree()
-# b.insertItem(12)
-# b.insertItem(14)
-# b.insertItem(11)
-#
-# b.printTree()
-# print(b.traverse())

@@ -209,6 +209,7 @@ class DLC:
         L = []
         if self.head is not None:
             return self.head.traverse(L, self.head)
+        return L
 
 class Test:
     def __init__(self, key):

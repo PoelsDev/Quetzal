@@ -88,6 +88,8 @@ class Table:
                 key = self.data.inorderTraverse()[0]
             self.data.searchTreeDelete(key)
         elif self.type == "23":
+            if key is None:
+                key = self.data.traverse()[0].getKey()
             self.data.deleteItem(key)
         elif self.type == "234":
             if key == None:
