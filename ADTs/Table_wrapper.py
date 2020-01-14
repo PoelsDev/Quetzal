@@ -30,7 +30,7 @@ class Table:
         elif type == "dlc":
             self.data = DLC()
         elif type == "23":
-            self.data = Tree()
+            self.data = TwoThreeFourTree()
         elif type == "binTree":
             self.data = BinarySearchTree()
         elif type == "h_lin":
@@ -89,7 +89,7 @@ class Table:
             self.data.searchTreeDelete(key)
         elif self.type == "23":
             if key is None:
-                key = self.data.traverse()[0].getKey()
+                key = self.data.inorder()[0].getKey()
             self.data.deleteItem(key)
         elif self.type == "234":
             if key == None:
@@ -105,7 +105,7 @@ class Table:
         pre: Adt moet correct aangemaakt zijn
         post: None
         """
-        if self.type == "dlc" or self.type == "23":
+        if self.type == "dlc":
             self.data.createDot()
         elif filename is not None:
             self.data.print(filename)
@@ -163,7 +163,7 @@ class Table:
         elif self.type == "binTree":
             return self.data.inorderTraverse()
         elif self.type == "23":
-            return self.data.traverse()
+            return self.data.inorder()
         elif self.type == "234":
             return self.data.inorder()
         elif self.type == "h_lin" or self.type == "h_quad" or self.type == "h_sep":
