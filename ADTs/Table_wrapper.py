@@ -180,4 +180,3 @@ class Table:
 # A.traverse()
 # A.delete(1)
 # A.print()
-# print("fin")
