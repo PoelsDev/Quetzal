@@ -2,7 +2,7 @@
 ## GAS Groepsgedeelte TO: Tjenne, Mounir, Jasper, Thibault
 
 ### TODO:
-1. Commentaar
+ * Nothing
 
 ### DONE:
 1. Geavanceerde ADTs
